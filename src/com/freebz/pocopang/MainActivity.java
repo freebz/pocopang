@@ -1,7 +1,7 @@
 package com.freebz.pocopang;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
 public class MainActivity extends Activity {
@@ -10,6 +10,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+//        ListView listView = (ListView) findViewById(R.id.animal_list);
+//        AnimalAdapter animalAdapter = new AnimalAdapter();
+//        listView.setAdapter(animalAdapter);
     }
 
 
