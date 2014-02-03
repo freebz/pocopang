@@ -3,6 +3,9 @@ package com.freebz.pocopang;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ListView;
+
+import com.freebz.pocopang.model.AnimalAdapter;
 
 public class MainActivity extends Activity {
 
@@ -11,9 +14,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-//        ListView listView = (ListView) findViewById(R.id.animal_list);
-//        AnimalAdapter animalAdapter = new AnimalAdapter();
-//        listView.setAdapter(animalAdapter);
+        ListView listView = (ListView) findViewById(R.id.animal_list);
+        AnimalAdapter animalAdapter = new AnimalAdapter();
+        listView.setAdapter(animalAdapter);
     }
 
 

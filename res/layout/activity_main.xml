@@ -1,4 +1,4 @@
-<LeneareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -7,6 +7,9 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
     
- 
+ 	<ListView
+ 	    android:id="@+id/animal_list"
+ 	    android:layout_width="fill_parent"
+ 	    android:layout_height="fill_parent" />
 
-</LeneareLayout>
+</LinearLayout>

@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.freebz.pocopang.R;
+
+
 public class AnimalAdapter extends BaseAdapter {
 	
 	private ArrayList<Animal> animals = new ArrayList<Animal>();
@@ -30,7 +33,7 @@ public class AnimalAdapter extends BaseAdapter {
 	public View getView(int index, View view, ViewGroup parent) {
 		if (view == null) {
 			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-//			view = inflater(R.layout.animal_list_item, parent, false);
+			view = inflater.inflate(R.layout.animal_list_item, parent, false);
 		}
 		
 		Animal animal = animals.get(index);
