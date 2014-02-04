@@ -1,11 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
     
-    <TextView android:id="@+id/animal_view"
-        android:layout_width="fill_parent"
+    <TextView android:id="@+id/name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:textSize="28sp" />
+    
+    <TextView android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp" />
 
 </LinearLayout>
