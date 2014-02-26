@@ -6,25 +6,28 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
 
+import com.freebz.pocopang.model.Animal;
 import com.freebz.pocopang.model.AnimalAdapter;
 import com.freebz.pocopang.model.AnimalList;
-import com.freebz.pocopang.model.AnimalOpenHelper;
+import com.freebz.pocopang.model.AnimalListDatabaseHelper;
 
 public class MainActivity extends Activity {
 	
 	private AnimalList animals = new AnimalList();
 	AnimalAdapter animalAdapter;
+	
+	private AnimalListDatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        ListView listView = (ListView) findViewById(R.id.animal_list);
-        animalAdapter = new AnimalAdapter();
-        listView.setAdapter(animalAdapter);
+        databaseHelper = new AnimalListDatabaseHelper(this);
         
-        AnimalOpenHelper openHelper = new AnimalOpenHelper(this);
+        ListView listView = (ListView) findViewById(R.id.animal_list);
+        animalAdapter = new AnimalAdapter(this, databaseHelper.getAnimalList());
+        listView.setAdapter(animalAdapter);
     }
 
 
@@ -36,9 +39,11 @@ public class MainActivity extends Activity {
     }
     
     public void onClickGetAnimal(View view) {
-
-    	animalAdapter.addAnimal(animals.getRandom());
-    	animalAdapter.notifyDataSetChanged();
+    	
+    	Animal animal = animals.getRandom();
+    	
+    	databaseHelper.saveAnimal(animal);
+    	animalAdapter.changeCursor(databaseHelper.getAnimalList());    	
     }
     
 }

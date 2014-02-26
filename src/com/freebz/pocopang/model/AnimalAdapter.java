@@ -1,84 +1,37 @@
 package com.freebz.pocopang.model;
 
-import java.util.ArrayList;
-
+import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.freebz.pocopang.R;
 
 
-public class AnimalAdapter extends BaseAdapter {
+public class AnimalAdapter extends CursorAdapter {
 	
-	private ArrayList<Animal> animals = new ArrayList<Animal>();
+	@SuppressWarnings("deprecation")
+	public AnimalAdapter(Context context, Cursor cursor) {
+		super(context, cursor);
+	}
 	
-	public AnimalAdapter() {
-		
-		AnimalList list = new AnimalList();
-		
-		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-//		animals.add(list.getRandom());
-		
-	}
-
 	@Override
-	public int getCount() {
-		return animals.size();
-	}
-
-	@Override
-	public Object getItem(int index) {
-		return getItem(index);
-	}
-
-	@Override
-	public long getItemId(int index) {
-		return index;
-	}
-
-	@Override
-	public View getView(int index, View view, ViewGroup parent) {
-		if (view == null) {
-			LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-			view = inflater.inflate(R.layout.animal_list_item, parent, false);
-		}
-		
-		Animal animal = animals.get(index);
-		
+	public void bindView(View view, Context context, Cursor cursor) {
 		TextView name = (TextView) view.findViewById(R.id.name);
-		name.setText(animal.getName());
+		name.setText(cursor.getString(cursor.getColumnIndex("name")));
 		
 		TextView count = (TextView) view.findViewById(R.id.count);
-		count.setText("0");
-		
-		return view;
+		count.setText(cursor.getString(cursor.getColumnIndex("count")));
 	}
 	
-	public void addAnimal(Animal animal) {
-		animals.add(animal);
+	@Override
+	public View newView(Context context, Cursor cursor, ViewGroup parent) {
+		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+		View view = inflater.inflate(R.layout.animal_list_item, parent, false);
+		return view;
 	}
 
 }
