@@ -2,6 +2,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+    
+    <Button
+        android:text="@string/clear"
+        android:layout_width="wrap_content"
+ 	    android:layout_height="wrap_content"
+ 	    android:layout_gravity="right" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,5 +27,11 @@
  	    android:layout_gravity="center"
  	    android:onClick="onClickGetAnimal"
  	    />
+ 	
+ 	<com.mocoplex.adlib.AdlibAdViewContainer
+ 	    android:layout_width="fill_parent"
+ 	    android:layout_height="wrap_content"
+ 	    android:id="@+id/ads"
+ 	    isDefaultBanner="true" />
 
 </LinearLayout>

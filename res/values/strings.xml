@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     
+    <string name="clear">초기화</string>
     <string name="get_animal">동물 뽑기</string>
+    <string name="x">&#160;x&#160;</string>
 
 </resources>

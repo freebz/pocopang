@@ -1,5 +1,6 @@
 package com.freebz.pocopang.model;
 
+
 public class Animal {
 
 	private int id;

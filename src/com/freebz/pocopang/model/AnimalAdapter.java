@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.freebz.pocopang.R;
@@ -25,6 +26,11 @@ public class AnimalAdapter extends CursorAdapter {
 		
 		TextView count = (TextView) view.findViewById(R.id.count);
 		count.setText(cursor.getString(cursor.getColumnIndex("count")));
+		
+		int id = cursor.getInt(cursor.getColumnIndex("_id"));
+		int resId = context.getResources().getIdentifier("_" + id, "drawable", "com.freebz.pocopang");
+		ImageView image = (ImageView) view.findViewById(R.id.image);
+		image.setImageResource(resId);
 	}
 	
 	@Override

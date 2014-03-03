@@ -1,6 +1,5 @@
 package com.freebz.pocopang;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -10,8 +9,10 @@ import com.freebz.pocopang.model.Animal;
 import com.freebz.pocopang.model.AnimalAdapter;
 import com.freebz.pocopang.model.AnimalList;
 import com.freebz.pocopang.model.AnimalListDatabaseHelper;
+import com.mocoplex.adlib.AdlibActivity;
+import com.mocoplex.adlib.AdlibConfig;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AdlibActivity {
 	
 	private AnimalList animals = new AnimalList();
 	AnimalAdapter animalAdapter;
@@ -36,6 +37,12 @@ public class MainActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+    
+    protected void initAds() {
+    	
+    	AdlibConfig.getInstance().bindPlatform("CAULY", "adlib.ads.SubAdlibAdViewCauly");
+    	AdlibConfig.getInstance().setAdlibKey("530f6fefe4b08300de8d9756");
     }
     
     public void onClickGetAnimal(View view) {
