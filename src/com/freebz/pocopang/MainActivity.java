@@ -27,6 +27,9 @@ public class MainActivity extends AdlibActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        initAds();
+        this.setAdsContainer(R.id.ads);
+        
         databaseHelper = new AnimalListDatabaseHelper(this);
         
         ListView listView = (ListView) findViewById(R.id.animal_list);
@@ -46,9 +49,8 @@ public class MainActivity extends AdlibActivity {
 //    }
     
     protected void initAds() {
-    	
     	AdlibConfig.getInstance().bindPlatform("CAULY", "adlib.ads.SubAdlibAdViewCauly");
-    	AdlibConfig.getInstance().setAdlibKey("530f6fefe4b08300de8d9756");
+    	AdlibConfig.getInstance().setAdlibKey("5314e977e4b08300de8daf11");
     }
     
     public void onClickClear(View view) {

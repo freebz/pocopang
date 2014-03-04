@@ -34,7 +34,8 @@ public class SubAdlibAdViewCauly extends SubAdlibAdViewCore implements com.fsn.c
 	protected boolean isAdAvailable = false;
 	
 	// 여기에 CAULY ID를 입력합니다.
-	static String caulyID = "CAULY_ID";
+//	static String caulyID = "CAULY";
+	static String caulyID = "u27P4CD0";
 	
 	public SubAdlibAdViewCauly(Context context) {
 		this(context,null);

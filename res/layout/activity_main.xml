@@ -42,6 +42,16 @@
  	    android:layout_gravity="center"
  	    android:onClick="onClickGetAnimal" />
  	
+ 	<!--
+ 	<com.fsn.cauly.CaulyAdView
+ 	    xmlns:app="http://schemas.android.com/apk/res/android"
+ 	    android:id="@+id/xmladview"
+ 	    android:layout_width="fill_parent"
+ 	    android:layout_height="wrap_content"
+ 	    app:appcode="u27P4CD0"
+ 	    app:bannerHeight="Proportional" />
+ 	-->
+ 	
  	<com.mocoplex.adlib.AdlibAdViewContainer
  	    android:layout_width="fill_parent"
  	    android:layout_height="wrap_content"

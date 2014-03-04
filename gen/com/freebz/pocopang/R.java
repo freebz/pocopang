@@ -9,6 +9,70 @@ package com.freebz.pocopang;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int allowcall=0x7f010003;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int appcode=0x7f010000;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int bannerHeight=0x7f010007;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int dynamicReloadInterval=0x7f010004;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int effect=0x7f010001;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int gps=0x7f010002;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int reloadInterval=0x7f010005;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int threadPriority=0x7f010006;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -109,4 +173,146 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a com_cauly_android_ad_AdView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_allowcall com.freebz.pocopang:allowcall}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_appcode com.freebz.pocopang:appcode}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_bannerHeight com.freebz.pocopang:bannerHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_dynamicReloadInterval com.freebz.pocopang:dynamicReloadInterval}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_effect com.freebz.pocopang:effect}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_gps com.freebz.pocopang:gps}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_reloadInterval com.freebz.pocopang:reloadInterval}</code></td><td></td></tr>
+           <tr><td><code>{@link #com_cauly_android_ad_AdView_threadPriority com.freebz.pocopang:threadPriority}</code></td><td></td></tr>
+           </table>
+           @see #com_cauly_android_ad_AdView_allowcall
+           @see #com_cauly_android_ad_AdView_appcode
+           @see #com_cauly_android_ad_AdView_bannerHeight
+           @see #com_cauly_android_ad_AdView_dynamicReloadInterval
+           @see #com_cauly_android_ad_AdView_effect
+           @see #com_cauly_android_ad_AdView_gps
+           @see #com_cauly_android_ad_AdView_reloadInterval
+           @see #com_cauly_android_ad_AdView_threadPriority
+         */
+        public static final int[] com_cauly_android_ad_AdView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#allowcall}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:allowcall
+        */
+        public static final int com_cauly_android_ad_AdView_allowcall = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#appcode}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:appcode
+        */
+        public static final int com_cauly_android_ad_AdView_appcode = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#bannerHeight}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:bannerHeight
+        */
+        public static final int com_cauly_android_ad_AdView_bannerHeight = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#dynamicReloadInterval}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:dynamicReloadInterval
+        */
+        public static final int com_cauly_android_ad_AdView_dynamicReloadInterval = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#effect}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:effect
+        */
+        public static final int com_cauly_android_ad_AdView_effect = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#gps}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:gps
+        */
+        public static final int com_cauly_android_ad_AdView_gps = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#reloadInterval}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:reloadInterval
+        */
+        public static final int com_cauly_android_ad_AdView_reloadInterval = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.freebz.pocopang.R.attr#threadPriority}
+          attribute's value can be found in the {@link #com_cauly_android_ad_AdView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.freebz.pocopang:threadPriority
+        */
+        public static final int com_cauly_android_ad_AdView_threadPriority = 6;
+    };
 }
