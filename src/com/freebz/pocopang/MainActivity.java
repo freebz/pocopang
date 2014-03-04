@@ -1,8 +1,11 @@
 package com.freebz.pocopang;
 
+import java.text.NumberFormat;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.freebz.pocopang.model.Animal;
 import com.freebz.pocopang.model.AnimalAdapter;
@@ -15,6 +18,7 @@ public class MainActivity extends AdlibActivity {
 	
 	private AnimalList animals = new AnimalList();
 	AnimalAdapter animalAdapter;
+	TextView cherry;
 	
 	private AnimalListDatabaseHelper databaseHelper;
 
@@ -28,6 +32,9 @@ public class MainActivity extends AdlibActivity {
         ListView listView = (ListView) findViewById(R.id.animal_list);
         animalAdapter = new AnimalAdapter(this, databaseHelper.getAnimalList());
         listView.setAdapter(animalAdapter);
+        
+        cherry = (TextView) findViewById(R.id.cherry);
+        refreshCherry();
     }
 
 
@@ -58,7 +65,18 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void refresh() {
+    	refreshCherry();
+    	refreshList();
+    }
+    
+    private void refreshList() {
     	animalAdapter.changeCursor(databaseHelper.getAnimalList());
+    }
+    
+    private void refreshCherry() {
+    	NumberFormat nf = NumberFormat.getInstance();
+    	int count = databaseHelper.getCount();
+    	cherry.setText(nf.format(count * 6000));
     }
     
 }

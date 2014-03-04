@@ -53,6 +53,15 @@ public class AnimalListDatabaseHelper {
 		return database.rawQuery("select * from " + TABLE_NAME + " order by " + ANIMAL_COLUMN_ID, null);
 	}
 	
+	public int getCount() {
+		Cursor cursor = database.rawQuery("select sum(" + ANIMAL_COLUMN_COUNT + ") from " + TABLE_NAME, null);
+//		Cursor cursor = database.rawQuery("select count(*) from " + TABLE_NAME, null);
+		cursor.moveToFirst();
+		int result = cursor.getInt(0);
+		cursor.close();
+		return result;
+	}
+	
 	private class AnimalOpenHelper extends SQLiteOpenHelper {
 
 		public AnimalOpenHelper(Context context) {
