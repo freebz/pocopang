@@ -32,12 +32,12 @@ public class MainActivity extends AdlibActivity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
     
     protected void initAds() {
     	
@@ -45,12 +45,21 @@ public class MainActivity extends AdlibActivity {
     	AdlibConfig.getInstance().setAdlibKey("530f6fefe4b08300de8d9756");
     }
     
+    public void onClickClear(View view) {
+    	databaseHelper.clearAnimal();
+    	refresh();
+    }
+    
     public void onClickGetAnimal(View view) {
     	
     	Animal animal = animals.getRandom();
     	
     	databaseHelper.saveAnimal(animal);
-    	animalAdapter.changeCursor(databaseHelper.getAnimalList());    	
+    	refresh();
+    }
+    
+    private void refresh() {
+    	animalAdapter.changeCursor(databaseHelper.getAnimalList());
     }
     
 }

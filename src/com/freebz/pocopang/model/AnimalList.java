@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AnimalList {
-
-	//private List<Animal> animals = new ArrayList<Animal>();
 	
 	private List<Animal> animals = Arrays.asList(new Animal[]{
 		  new Animal(1, "고백해보니", 4)

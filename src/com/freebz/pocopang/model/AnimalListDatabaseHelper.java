@@ -26,6 +26,10 @@ public class AnimalListDatabaseHelper {
 		database = openHelper.getWritableDatabase();
 	}
 	
+	public void clearAnimal() {
+		database.execSQL("delete from " + TABLE_NAME);
+	}
+	
 	public void saveAnimal(Animal animal) {
 		ContentValues values = new ContentValues();
 		values.put(ANIMAL_COLUMN_ID, animal.getId());
