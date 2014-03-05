@@ -49,6 +49,7 @@ public class MainActivity extends AdlibActivity {
 //    }
     
     protected void initAds() {
+    	AdlibConfig.getInstance().bindPlatform("ADAM", "adlib.ads.SubAdlibAdViewAdam");
     	AdlibConfig.getInstance().bindPlatform("CAULY", "adlib.ads.SubAdlibAdViewCauly");
     	AdlibConfig.getInstance().setAdlibKey("5314e977e4b08300de8daf11");
     }
