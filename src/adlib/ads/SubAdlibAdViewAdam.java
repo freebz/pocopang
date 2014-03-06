@@ -37,7 +37,7 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore  {
 //	static String adamID = "ADAM_ID";
 //    static String adamInterstitialID = "ADAM_INTERSTITIAL_ID";
     static String adamID = "8a5cZ4UT1448b51e760";
-    static String adamInterstitialID = "ADAM_INTERSTITIAL_ID";
+    static String adamInterstitialID = "8a5cZ4UT1448b51e760";
 
 	public SubAdlibAdViewAdam(Context context) {
 		this(context,null);
