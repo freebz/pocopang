@@ -26,6 +26,7 @@
 	 	    android:layout_height="wrap_content"
 	 	    android:layout_gravity="right"
 	 	    android:onClick="onClickClear" />
+        
     </LinearLayout>
     
     
@@ -35,12 +36,29 @@
  	    android:layout_height="0dip"
  	    android:layout_weight="1" />
  	
+ 	<!--
  	<Button
  	    android:text="@string/get_animal"
  	    android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
  	    android:layout_gravity="center"
  	    android:onClick="onClickGetAnimal" />
+ 	-->
+ 	
+ 	<LinearLayout
+ 	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#de9a31">
+        
+ 	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:src="@drawable/btn_get_animal"
+	        android:onClick="onClickGetAnimal" />
+ 	    
+ 	</LinearLayout>
  	
  	<!--
  	<com.fsn.cauly.CaulyAdView

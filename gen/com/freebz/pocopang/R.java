@@ -119,7 +119,8 @@ containing a value of this type.
         public static final int _7=0x7f02001f;
         public static final int _8=0x7f020020;
         public static final int _9=0x7f020021;
-        public static final int ic_launcher=0x7f020022;
+        public static final int btn_get_animal=0x7f020022;
+        public static final int ic_launcher=0x7f020023;
     }
     public static final class id {
         public static final int action_settings=0x7f080006;
