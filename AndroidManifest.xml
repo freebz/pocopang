@@ -50,6 +50,10 @@
 			android:configChanges="orientation|keyboard|keyboardHidden" />
 		
 		<activity 
+			android:name="com.sec.android.ad.AdActivity"
+			android:configChanges="keyboardHidden|orientation|screenSize" />
+		
+		<activity 
 			android:name="com.freebz.pocopang.PopupGetAnimalActivity"
 			android:theme="@android:style/Theme.Dialog"
 			android:configChanges="keyboardHidden|orientation|screenSize" />
