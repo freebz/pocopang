@@ -119,21 +119,32 @@ containing a value of this type.
         public static final int _7=0x7f02001f;
         public static final int _8=0x7f020020;
         public static final int _9=0x7f020021;
-        public static final int btn_get_animal=0x7f020022;
-        public static final int ic_launcher=0x7f020023;
+        public static final int btn_continue=0x7f020022;
+        public static final int btn_get_animal=0x7f020023;
+        public static final int btn_ok=0x7f020024;
+        public static final int ic_launcher=0x7f020025;
+        public static final int plant1=0x7f020026;
+        public static final int popup_get_animal=0x7f020027;
+        public static final int popup_get_animal_background=0x7f020028;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
+        public static final int action_settings=0x7f08000b;
         public static final int ads=0x7f080002;
+        public static final int animal=0x7f080006;
         public static final int animal_list=0x7f080001;
         public static final int cherry=0x7f080000;
         public static final int count=0x7f080005;
         public static final int image=0x7f080003;
         public static final int name=0x7f080004;
+        public static final int plant1=0x7f080007;
+        public static final int plant2=0x7f080008;
+        public static final int plant3=0x7f080009;
+        public static final int plant4=0x7f08000a;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int animal_list_item=0x7f030001;
+        public static final int popup_get_animal=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f070000;

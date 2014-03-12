@@ -2,6 +2,7 @@ package com.freebz.pocopang;
 
 import java.text.NumberFormat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -11,6 +12,7 @@ import com.freebz.pocopang.model.Animal;
 import com.freebz.pocopang.model.AnimalAdapter;
 import com.freebz.pocopang.model.AnimalList;
 import com.freebz.pocopang.model.AnimalListDatabaseHelper;
+import com.freebz.pocopang.model.Constant;
 import com.mocoplex.adlib.AdlibActivity;
 import com.mocoplex.adlib.AdlibConfig;
 
@@ -40,7 +42,6 @@ public class MainActivity extends AdlibActivity {
         refreshCherry();
     }
 
-
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
@@ -52,8 +53,6 @@ public class MainActivity extends AdlibActivity {
     	AdlibConfig.getInstance().bindPlatform("ADAM", "adlib.ads.SubAdlibAdViewAdam");
     	AdlibConfig.getInstance().bindPlatform("ADMOB", "adlib.ads.SubAdlibAdViewAdmob");
     	AdlibConfig.getInstance().bindPlatform("CAULY", "adlib.ads.SubAdlibAdViewCauly");
-    	AdlibConfig.getInstance().bindPlatform("ADHUB", "adlib.ads.SubAdlibAdViewAdHub");
-    	
     	AdlibConfig.getInstance().setAdlibKey("5314e977e4b08300de8daf11");
     }
     
@@ -67,11 +66,27 @@ public class MainActivity extends AdlibActivity {
     }
     
     public void onClickGetAnimal(View view) {
-    	
+    	pushNewAnimal();
+    }
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	switch (requestCode) {
+    	case Constant.CONTINUE_GET_ANIAML:
+    		if (resultCode == Constant.RESULT_CONTINUE) {
+    			pushNewAnimal();
+    		}
+    		break;
+    	}
+    }
+    
+    private void pushNewAnimal() {
     	Animal animal = animals.getRandom();
-    	
     	databaseHelper.saveAnimal(animal);
     	refresh();
+    	
+    	Intent intent = new Intent(this, PopupGetAnimalActivity.class);
+    	intent.putExtra("id", animal.getId());
+    	startActivityForResult(intent, Constant.CONTINUE_GET_ANIAML);
     }
     
     private void refresh() {
