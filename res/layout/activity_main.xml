@@ -1,79 +1,136 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:layout_height="fill_parent">
     
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:text="@string/cherry" />
-        
-        <TextView android:id="@+id/cherry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="28sp" />
-        
-        <Button
-	        android:text="@string/clear"
-	        android:layout_width="wrap_content"
-	 	    android:layout_height="wrap_content"
-	 	    android:layout_gravity="right"
-	 	    android:onClick="onClickClear" />
-        
-    </LinearLayout>
-    
-    
- 	<ListView
- 	    android:id="@+id/animal_list"
- 	    android:layout_width="fill_parent"
- 	    android:layout_height="0dip"
- 	    android:layout_weight="1" />
- 	
- 	<!--
- 	<Button
- 	    android:text="@string/get_animal"
- 	    android:layout_width="wrap_content"
- 	    android:layout_height="wrap_content"
- 	    android:layout_gravity="center"
- 	    android:onClick="onClickGetAnimal" />
- 	-->
- 	
- 	<LinearLayout
- 	    android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#de9a31">
-        
- 	    <ImageView
-	        android:layout_width="wrap_content"
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical">
+	    
+	    <RelativeLayout 
+	    	android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:src="@drawable/btn_get_animal"
-	        android:onClick="onClickGetAnimal" />
- 	    
- 	</LinearLayout>
- 	
- 	<!--
- 	<com.fsn.cauly.CaulyAdView
- 	    xmlns:app="http://schemas.android.com/apk/res/com.freebz.pocopang"
- 	    android:id="@+id/xmladview"
- 	    android:layout_width="fill_parent"
- 	    android:layout_height="wrap_content"
- 	    app:appcode="u27P4CD0"
- 	    app:bannerHeight="Proportional" />
- 	-->
- 	
- 	<com.mocoplex.adlib.AdlibAdViewContainer
- 	    android:layout_width="fill_parent"
- 	    android:layout_height="wrap_content"
- 	    android:id="@+id/ads"
- 	    isDefaultBanner="true" />
-
-</LinearLayout>
+	        android:background="@android:color/black">
+	            
+		    <ImageView android:id="@+id/cherry_back"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:src="@drawable/cherry"
+				android:onClick="onClickCherry" />
+		    
+		    <TextView android:id="@+id/cherry"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            
+	            
+	            android:layout_alignRight="@id/cherry_back"
+	            android:layout_centerVertical="true"
+	            android:layout_marginRight="30dp"
+	            
+	            android:textColor="@android:color/white"
+	            android:textSize="14sp" />
+	          
+	    </RelativeLayout>
+	        
+	    <!-- 
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+	        
+	        
+	    
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="28sp"
+	            android:text="@string/cherry" />
+	             ->
+	        
+	        
+	        
+	        <Button
+		        android:text="@string/clear"
+		        android:layout_width="wrap_content"
+		 	    android:layout_height="wrap_content"
+		 	    android:layout_gravity="right"
+		 	    android:onClick="onClickClear" />
+	        
+	    </LinearLayout>
+	     -->
+	    
+	    
+	 	<ListView
+	 	    android:id="@+id/animal_list"
+	 	    android:layout_width="fill_parent"
+	 	    android:layout_height="0dip"
+	 	    android:layout_weight="1" />
+	 	
+	 	<!--
+	 	<Button
+	 	    android:text="@string/get_animal"
+	 	    android:layout_width="wrap_content"
+	 	    android:layout_height="wrap_content"
+	 	    android:layout_gravity="center"
+	 	    android:onClick="onClickGetAnimal" />
+	 	-->
+	 	
+	 	<LinearLayout
+	 	    android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:background="#de9a31">
+	        
+	 	    <ImageView android:id="@+id/btn_get_animal"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:src="@drawable/btn_get_animal"
+		        android:onClick="onClickGetAnimal" />
+	 	    
+	 	</LinearLayout>
+	 	
+	 	<!--
+	 	<com.fsn.cauly.CaulyAdView
+	 	    xmlns:app="http://schemas.android.com/apk/res/com.freebz.pocopang"
+	 	    android:id="@+id/xmladview"
+	 	    android:layout_width="fill_parent"
+	 	    android:layout_height="wrap_content"
+	 	    app:appcode="u27P4CD0"
+	 	    app:bannerHeight="Proportional" />
+	 	-->
+	 	
+	 	<com.mocoplex.adlib.AdlibAdViewContainer
+	 	    android:layout_width="fill_parent"
+	 	    android:layout_height="wrap_content"
+	 	    android:id="@+id/ads"
+	 	    isDefaultBanner="true" />
+	
+	</LinearLayout>
+	
+	<ImageView android:id="@+id/cherry_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:onClick="onClickNothing"
+        android:src="@drawable/cherry_store" />
+	
+	<!--  
+	<RelativeLayout 
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+	    >
+	 	
+	    
+	    
+	    
+	</RelativeLayout>
+	
+	-->
+	
+</RelativeLayout>

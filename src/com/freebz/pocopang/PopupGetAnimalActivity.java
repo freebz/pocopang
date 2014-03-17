@@ -26,21 +26,12 @@ public class PopupGetAnimalActivity extends Activity {
                 WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         setContentView(R.layout.popup_get_animal);
         
-//        WebView webView = (WebView)findViewById(R.id.webPopup);
-//        webView.setWebViewClient(new myWebViewClient());
-//        WebSettings webSettings = webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//        webSettings.setBuiltInZoomControls(true);
-//          webView.loadUrl("http://www.google.com");
-        
         plant1 = (ImageView) findViewById(R.id.plant1);
         plant2 = (ImageView) findViewById(R.id.plant2);
         plant3 = (ImageView) findViewById(R.id.plant3);
         plant4 = (ImageView) findViewById(R.id.plant4);
         
         int id = (Integer) getIntent().getExtras().get("id");
-        
-//        int id = cursor.getInt(cursor.getColumnIndex("_id"));
 		int resId = this.getResources().getIdentifier("_" + id, "drawable", "com.freebz.pocopang");
 		ImageView image = (ImageView) findViewById(R.id.animal);
 		image.setImageResource(resId);

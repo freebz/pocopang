@@ -1,10 +1,11 @@
 package com.freebz.pocopang;
 
-import java.text.NumberFormat;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ public class MainActivity extends AdlibActivity {
 	private AnimalList animals = new AnimalList();
 	AnimalAdapter animalAdapter;
 	TextView cherry;
+	ImageView cherryStore;
+	ImageView btnGetAnimal;
 	
 	private AnimalListDatabaseHelper databaseHelper;
 
@@ -39,6 +42,54 @@ public class MainActivity extends AdlibActivity {
         listView.setAdapter(animalAdapter);
         
         cherry = (TextView) findViewById(R.id.cherry);
+        cherryStore = (ImageView) findViewById(R.id.cherry_store);
+        btnGetAnimal = (ImageView) findViewById(R.id.btn_get_animal);
+                
+        cherryStore.setOnTouchListener(new OnTouchListener(){
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					float x = event.getX();
+					float y = event.getY();
+					
+					// 닫기버튼
+					if (x > 415 && x < 460 && y > 35 && y < 55) {
+						closeCherryStore();
+					}
+					else if (x > 310 && x < 430 && y > 90 && y < 180) {
+						closeCherryStore();
+				    	databaseHelper.addCherry(6000);
+				    	refreshCherry();
+					}
+					else if (x > 310 && x < 430 && y > 210 && y < 300) {
+						closeCherryStore();
+				    	databaseHelper.addCherry(33000);
+				    	refreshCherry();
+					}
+					else if (x > 310 && x < 430 && y > 210 && y < 300) {
+						closeCherryStore();
+				    	databaseHelper.addCherry(33000);
+				    	refreshCherry();
+					}
+					else if (x > 310 && x < 430 && y > 330 && y < 420) {
+						closeCherryStore();
+				    	databaseHelper.addCherry(86400);
+				    	refreshCherry();
+					}
+					else if (x > 310 && x < 430 && y > 450 && y < 540) {
+						closeCherryStore();
+				    	databaseHelper.addCherry(195000);
+				    	refreshCherry();
+					}
+				}
+		    	
+				return false;
+			}
+        	
+        });
+        
         refreshCherry();
     }
 
@@ -58,10 +109,6 @@ public class MainActivity extends AdlibActivity {
     	AdlibConfig.getInstance().setAdlibKey("5314e977e4b08300de8daf11");
     }
     
-//    protected void load() {
-//    	loadFullInterstitialAd();
-//    }
-    
     public void onClickClear(View view) {
     	databaseHelper.clearAnimal();
     	refresh();
@@ -69,6 +116,14 @@ public class MainActivity extends AdlibActivity {
     
     public void onClickGetAnimal(View view) {
     	pushNewAnimal();
+    }
+    
+    public void onClickCherry(View view) {
+    	openCherryStore();
+    }
+    
+    public void onClickNothing(View view) {
+    	// ImageView에 클릭 메소드를 지정하지 않으면, touch 이벤트가 발생하지 않음. 원인은 잘 모르겠음.
     }
     
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -82,6 +137,10 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void pushNewAnimal() {
+    	if (!databaseHelper.hasCherry(6000)) {
+    		return;
+    	}
+    	
     	Animal animal = animals.getRandom();
     	databaseHelper.saveAnimal(animal);
     	refresh();
@@ -101,9 +160,22 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void refreshCherry() {
-    	NumberFormat nf = NumberFormat.getInstance();
-    	int count = databaseHelper.getCount();
-    	cherry.setText(nf.format(count * 6000));
+    	cherry.setText(Long.toString(databaseHelper.getCherry()));
     }
     
+    private void openCherryStore() {
+    	visibleCherryStore(true);
+    }
+    
+    private void closeCherryStore() {
+    	visibleCherryStore(false);
+    }
+    
+    private void visibleCherryStore(boolean value) {
+    	boolean state = !value;
+    	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
+    	
+    	btnGetAnimal.setEnabled(state);
+    	cherryStore.setVisibility(visible);
+    }
 }
