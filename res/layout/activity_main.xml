@@ -2,7 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     
-	<LinearLayout 
+	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:orientation="vertical">
@@ -110,27 +110,65 @@
 	
 	</LinearLayout>
 	
-	<ImageView android:id="@+id/cherry_store"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:onClick="onClickNothing"
-        android:src="@drawable/cherry_store" />
-	
-	<!--  
-	<RelativeLayout 
+	<RelativeLayout android:id="@+id/cherry_store"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="invisible"
-	    >
+        android:visibility="invisible">
 	 	
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/back_cherry_store"
+	        android:layout_alignTop="@id/back_cherry_store"
+	        android:layout_marginTop="18dp"
+	        android:layout_marginRight="12dp"
+	        android:src="@drawable/btn_close"
+	        android:onClick="onClickCherryStore" />
 	    
+	    <ImageView android:id="@+id/btnCherry1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@id/back_cherry_store"
+	        android:layout_alignTop="@id/back_cherry_store"
+	        android:layout_marginTop="75dp"
+	        android:layout_marginRight="25dp"
+	        android:src="@drawable/btn_get_cherry"
+	        android:onClick="onClickCherryStore" />
 	    
+	    <ImageView android:id="@+id/btnCherry2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnCherry1"
+	        android:layout_alignLeft="@id/btnCherry1"
+	        android:layout_marginTop="32dp"
+	        android:src="@drawable/btn_get_cherry"
+	        android:onClick="onClickCherryStore" />
+	    
+	    <ImageView android:id="@+id/btnCherry3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnCherry2"
+	        android:layout_alignLeft="@id/btnCherry2"
+	        android:layout_marginTop="32dp"
+	        android:src="@drawable/btn_get_cherry"
+	        android:onClick="onClickCherryStore" />
+	    
+	    <ImageView android:id="@+id/btnCherry4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnCherry3"
+	        android:layout_alignLeft="@id/btnCherry3"
+	        android:layout_marginTop="32dp"
+	        android:src="@drawable/btn_get_cherry"
+	        android:onClick="onClickCherryStore" />
+	    
+	    <ImageView android:id="@id/back_cherry_store"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/cherry_store" />
 	    
 	</RelativeLayout>
-	
-	-->
 	
 </RelativeLayout>
