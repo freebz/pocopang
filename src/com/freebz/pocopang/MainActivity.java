@@ -105,7 +105,7 @@ public class MainActivity extends AdlibActivity {
     		refreshCherry();
     		break;
     	case R.id.btnCherry3:
-    		databaseHelper.addCherry(864000);
+    		databaseHelper.addCherry(86400);
     		refreshCherry();
     		break;
     	case R.id.btnCherry4:
