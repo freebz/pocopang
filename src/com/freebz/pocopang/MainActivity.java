@@ -192,18 +192,24 @@ public class MainActivity extends AdlibActivity {
     
     private void removePlants() {
 		
-		TranslateAnimation left = new TranslateAnimation(0, -1000, 0, 0);
-		TranslateAnimation right = new TranslateAnimation(0, 1000, 0, 0);
+		TranslateAnimation left1 = new TranslateAnimation(0, -1000, 0, 0);
+		TranslateAnimation left2 = new TranslateAnimation(0, -1000, 0, 0);
+		TranslateAnimation right1 = new TranslateAnimation(0, 1000, 0, 0);
+		TranslateAnimation right2 = new TranslateAnimation(0, 1000, 0, 0);
 		
-		left.setDuration(1000);
-		left.setFillAfter(true);
+		left1.setDuration(1000);
+		left1.setFillAfter(true);
+		left2.setDuration(1200);
+		left2.setFillAfter(true);
 		
-		right.setDuration(1000);
-		right.setFillAfter(true);
+		right1.setDuration(1000);
+		right1.setFillAfter(true);
+		right2.setDuration(1200);
+		right2.setFillAfter(true);
 		
-		plant1.startAnimation(left);
-		plant2.startAnimation(right);
-		plant3.startAnimation(left);
-		plant4.startAnimation(right);
+		plant1.startAnimation(left2);
+		plant2.startAnimation(right2);
+		plant3.startAnimation(left1);
+		plant4.startAnimation(right1);
 	}
 }
