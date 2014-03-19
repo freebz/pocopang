@@ -1,10 +1,9 @@
 package com.freebz.pocopang;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,18 +12,25 @@ import com.freebz.pocopang.model.Animal;
 import com.freebz.pocopang.model.AnimalAdapter;
 import com.freebz.pocopang.model.AnimalList;
 import com.freebz.pocopang.model.AnimalListDatabaseHelper;
-import com.freebz.pocopang.model.Constant;
 import com.mocoplex.adlib.AdlibActivity;
 import com.mocoplex.adlib.AdlibConfig;
 
 public class MainActivity extends AdlibActivity {
 	
 	private AnimalList animals = new AnimalList();
-	AnimalAdapter animalAdapter;
-	ListView listView;
-	TextView cherry;
-	RelativeLayout cherryStore;
-	ImageView btnGetAnimal;
+	private AnimalAdapter animalAdapter;
+	private ImageView cherry_back;
+	private ListView listView;
+	private TextView cherry;
+	private RelativeLayout cherryStore;
+	private ImageView btnGetAnimal;
+	
+	private RelativeLayout popupGetAnimal;
+	private ImageView plant1;
+	private ImageView plant2;
+	private ImageView plant3;
+	private ImageView plant4;
+	private ImageView imgAnimal;
 	
 	private AnimalListDatabaseHelper databaseHelper;
 
@@ -42,9 +48,17 @@ public class MainActivity extends AdlibActivity {
         animalAdapter = new AnimalAdapter(this, databaseHelper.getAnimalList());
         listView.setAdapter(animalAdapter);
         
+        cherry_back = (ImageView) findViewById(R.id.cherry_back);
         cherry = (TextView) findViewById(R.id.cherry);
         cherryStore = (RelativeLayout) findViewById(R.id.cherry_store);
         btnGetAnimal = (ImageView) findViewById(R.id.btn_get_animal);
+        
+        popupGetAnimal = (RelativeLayout) findViewById(R.id.popup_get_animal);
+        plant1 = (ImageView) findViewById(R.id.plant1);
+        plant2 = (ImageView) findViewById(R.id.plant2);
+        plant3 = (ImageView) findViewById(R.id.plant3);
+        plant4 = (ImageView) findViewById(R.id.plant4);
+        imgAnimal = (ImageView) findViewById(R.id.animal);
         
         refreshCherry();
     }
@@ -71,6 +85,7 @@ public class MainActivity extends AdlibActivity {
     }
     
     public void onClickGetAnimal(View view) {
+    	openGatAnimalPopup();
     	pushNewAnimal();
     }
     
@@ -102,28 +117,28 @@ public class MainActivity extends AdlibActivity {
     	closeCherryStore();
     }
     
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	switch (requestCode) {
-    	case Constant.CONTINUE_GET_ANIAML:
-    		if (resultCode == Constant.RESULT_CONTINUE) {
-    			pushNewAnimal();
-    		}
-    		break;
-    	}
+    public void onClickGetAnimalPopupOk(View view) {
+    	closeGatAnimalPopup();
+	}
+    
+    public void onClickGetAnimalPopupContinue(View view) {
+    	pushNewAnimal();
     }
     
     private void pushNewAnimal() {
     	if (!databaseHelper.hasCherry(6000)) {
+    		closeGatAnimalPopup();
     		return;
     	}
     	
     	Animal animal = animals.getRandom();
+    	
+    	int resId = this.getResources().getIdentifier("_" + animal.getId(), "drawable", "com.freebz.pocopang");
+    	imgAnimal.setImageResource(resId);
+    	removePlants();
+    	
     	databaseHelper.saveAnimal(animal);
     	refresh();
-    	
-    	Intent intent = new Intent(this, PopupGetAnimalActivity.class);
-    	intent.putExtra("id", animal.getId());
-    	startActivityForResult(intent, Constant.CONTINUE_GET_ANIAML);
     }
     
     private void refresh() {
@@ -151,8 +166,44 @@ public class MainActivity extends AdlibActivity {
     	boolean state = !value;
     	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
     	
+    	cherry_back.setEnabled(state);
     	listView.setEnabled(state);
     	btnGetAnimal.setEnabled(state);
     	cherryStore.setVisibility(visible);
     }
+    
+    private void openGatAnimalPopup() {
+    	visibleGatAnimalPopup(true);
+    }
+    
+    private void closeGatAnimalPopup() {
+    	visibleGatAnimalPopup(false);
+    }
+    
+    private void visibleGatAnimalPopup(boolean value) {
+    	boolean state = !value;
+    	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
+    	
+    	cherry_back.setEnabled(state);
+    	listView.setEnabled(state);
+    	btnGetAnimal.setEnabled(state);
+    	popupGetAnimal.setVisibility(visible);
+    }
+    
+    private void removePlants() {
+		
+		TranslateAnimation left = new TranslateAnimation(0, -1000, 0, 0);
+		TranslateAnimation right = new TranslateAnimation(0, 1000, 0, 0);
+		
+		left.setDuration(1000);
+		left.setFillAfter(true);
+		
+		right.setDuration(1000);
+		right.setFillAfter(true);
+		
+		plant1.startAnimation(left);
+		plant2.startAnimation(right);
+		plant3.startAnimation(left);
+		plant4.startAnimation(right);
+	}
 }

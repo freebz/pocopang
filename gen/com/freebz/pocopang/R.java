@@ -132,9 +132,9 @@ containing a value of this type.
         public static final int popup_get_animal_background=0x7f02002c;
     }
     public static final class id {
-        public static final int action_settings=0x7f080013;
+        public static final int action_settings=0x7f080014;
         public static final int ads=0x7f080004;
-        public static final int animal=0x7f08000e;
+        public static final int animal=0x7f08000c;
         public static final int animal_list=0x7f080002;
         public static final int back_cherry_store=0x7f080006;
         public static final int btnCherry1=0x7f080007;
@@ -145,18 +145,18 @@ containing a value of this type.
         public static final int cherry=0x7f080001;
         public static final int cherry_back=0x7f080000;
         public static final int cherry_store=0x7f080005;
-        public static final int count=0x7f08000d;
-        public static final int image=0x7f08000b;
-        public static final int name=0x7f08000c;
-        public static final int plant1=0x7f08000f;
-        public static final int plant2=0x7f080010;
-        public static final int plant3=0x7f080011;
-        public static final int plant4=0x7f080012;
+        public static final int count=0x7f080013;
+        public static final int image=0x7f080011;
+        public static final int name=0x7f080012;
+        public static final int plant1=0x7f08000d;
+        public static final int plant2=0x7f08000e;
+        public static final int plant3=0x7f08000f;
+        public static final int plant4=0x7f080010;
+        public static final int popup_get_animal=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int animal_list_item=0x7f030001;
-        public static final int popup_get_animal=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f070000;

@@ -77,20 +77,19 @@
 	 	    android:onClick="onClickGetAnimal" />
 	 	-->
 	 	
-	 	<LinearLayout
+	 	<RelativeLayout
 	 	    android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:orientation="horizontal"
 	        android:background="#de9a31">
 	        
 	 	    <ImageView android:id="@+id/btn_get_animal"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_weight="1"
+		        android:layout_centerInParent="true"
 		        android:src="@drawable/btn_get_animal"
 		        android:onClick="onClickGetAnimal" />
 	 	    
-	 	</LinearLayout>
+	 	</RelativeLayout>
 	 	
 	 	<!--
 	 	<com.fsn.cauly.CaulyAdView
@@ -110,6 +109,7 @@
 	
 	</LinearLayout>
 	
+	<!--  Cherry Store Popup -->
 	<RelativeLayout android:id="@+id/cherry_store"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -169,6 +169,70 @@
 	        android:layout_centerInParent="true"
 	        android:src="@drawable/cherry_store" />
 	    
+	</RelativeLayout>
+	
+	<!--  Animal Popup -->
+	<RelativeLayout android:id="@+id/popup_get_animal"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+	    
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/popup_get_animal_background" />
+	    
+	    <ImageView android:id="@+id/animal"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="90dp"
+	        android:layout_marginTop="120dp" />
+	    
+	    <ImageView android:id="@+id/plant1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="100dp"
+	        android:src="@drawable/plant1" />
+	    
+	    <ImageView android:id="@+id/plant2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="110dp"
+	        android:layout_marginTop="100dp"
+	        android:src="@drawable/plant1" />
+	    
+	    <ImageView android:id="@+id/plant3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="20dp"
+	        android:layout_marginTop="160dp"
+	        android:src="@drawable/plant1" />
+	    
+	    <ImageView android:id="@+id/plant4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="110dp"
+	        android:layout_marginTop="160dp"
+	        android:src="@drawable/plant1" />
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginTop="250dp"
+	        android:src="@drawable/btn_ok"
+	        android:onClick="onClickGetAnimalPopupOk" />
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="130dp"
+	        android:layout_marginTop="250dp"
+	        android:src="@drawable/btn_continue"
+	        android:onClick="onClickGetAnimalPopupContinue" />
+    
 	</RelativeLayout>
 	
 </RelativeLayout>
