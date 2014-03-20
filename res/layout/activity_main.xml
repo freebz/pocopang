@@ -193,35 +193,35 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="20dp"
-	        android:layout_marginTop="100dp"
+	        android:layout_marginTop="80dp"
 	        android:src="@drawable/plant1" />
 	    
 	    <ImageView android:id="@+id/plant2"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="110dp"
-	        android:layout_marginTop="100dp"
+	        android:layout_marginTop="80dp"
 	        android:src="@drawable/plant1" />
 	    
 	    <ImageView android:id="@+id/plant3"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="20dp"
-	        android:layout_marginTop="160dp"
+	        android:layout_marginTop="140dp"
 	        android:src="@drawable/plant1" />
 	    
 	    <ImageView android:id="@+id/plant4"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="110dp"
-	        android:layout_marginTop="160dp"
+	        android:layout_marginTop="140dp"
 	        android:src="@drawable/plant1" />
 	    
 	    <ImageView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="10dp"
-	        android:layout_marginTop="250dp"
+	        android:layout_marginTop="260dp"
 	        android:src="@drawable/btn_ok"
 	        android:onClick="onClickGetAnimalPopupOk" />
 	    
@@ -229,7 +229,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="130dp"
-	        android:layout_marginTop="250dp"
+	        android:layout_marginTop="260dp"
 	        android:src="@drawable/btn_continue"
 	        android:onClick="onClickGetAnimalPopupContinue" />
     

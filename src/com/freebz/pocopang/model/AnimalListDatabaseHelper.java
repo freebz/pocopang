@@ -65,7 +65,8 @@ public class AnimalListDatabaseHelper {
 	
 	public void addCherry(long cherry) {
 		database.execSQL("update cherry set "
-				+ "cherry = cherry + " + Long.toString(cherry));
+				+ "cherry = cherry + " + Long.toString(cherry)
+				+ " where type = 1");
 	}
 	
 	public void subCherry(long cherry) {
@@ -73,6 +74,10 @@ public class AnimalListDatabaseHelper {
 			database.execSQL("update cherry set "
 					+ "cherry = cherry - " + Long.toString(cherry)
 					+ " where type = 1");
+			
+			database.execSQL("update cherry set "
+					+ "cherry = cherry + " + Long.toString(cherry)
+					+ " where type = 2");
 		}
 	}
 	
@@ -134,6 +139,7 @@ public class AnimalListDatabaseHelper {
 			database.insert("cherry", null, values);
 			
 			values.put("type",  2);
+			values.put("cherry", 0);
 			database.insert("cherry", null, values);
 		}
 	}
