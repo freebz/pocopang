@@ -235,4 +235,38 @@
     
 	</RelativeLayout>
 	
+	
+	<!--  Alert1 Popup -->
+	<RelativeLayout android:id="@+id/popup_alert"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/back_popup_alert"
+	        android:layout_alignTop="@id/back_popup_alert"
+	        android:layout_marginTop="12dp"
+	        android:layout_marginRight="8dp"
+	        android:src="@drawable/btn_close"
+	        android:onClick="onClickAlertPopupClose" />
+	    
+	     <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@id/back_popup_alert"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="18dp"
+	        android:src="@drawable/btn_ok"
+	        android:onClick="onClickAlertPopupOk" />
+	     
+	     <ImageView android:id="@id/back_popup_alert"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/alert1" />
+	    
+	</RelativeLayout>
+	
 </RelativeLayout>

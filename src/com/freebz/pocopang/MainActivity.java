@@ -32,6 +32,8 @@ public class MainActivity extends AdlibActivity {
 	private ImageView plant4;
 	private ImageView imgAnimal;
 	
+	private RelativeLayout popupAlert;
+	
 	private AnimalListDatabaseHelper databaseHelper;
 
     @Override
@@ -59,6 +61,8 @@ public class MainActivity extends AdlibActivity {
         plant3 = (ImageView) findViewById(R.id.plant3);
         plant4 = (ImageView) findViewById(R.id.plant4);
         imgAnimal = (ImageView) findViewById(R.id.animal);
+        
+        popupAlert = (RelativeLayout) findViewById(R.id.popup_alert);
         
         refreshCherry();
     }
@@ -125,9 +129,19 @@ public class MainActivity extends AdlibActivity {
     	pushNewAnimal();
     }
     
+    public void onClickAlertPopupClose(View view) {
+    	closeAlertPopup();
+    }
+    
+    public void onClickAlertPopupOk(View view) {
+    	closeAlertPopup();
+    	openCherryStore();
+    }
+    
     private void pushNewAnimal() {
     	if (!databaseHelper.hasCherry(6000)) {
     		closeGatAnimalPopup();
+    		openAlertPopup();
     		return;
     	}
     	
@@ -163,12 +177,8 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void visibleCherryStore(boolean value) {
-    	boolean state = !value;
     	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
-    	
-    	cherry_back.setEnabled(state);
-    	listView.setEnabled(state);
-    	btnGetAnimal.setEnabled(state);
+    	buttonClickable(!value);
     	cherryStore.setVisibility(visible);
     }
     
@@ -181,13 +191,29 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void visibleGatAnimalPopup(boolean value) {
-    	boolean state = !value;
     	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
-    	
+    	buttonClickable(!value);
+    	popupGetAnimal.setVisibility(visible);
+    }
+    
+    private void openAlertPopup() {
+    	visibleAlertPopup(true);
+    }
+    
+    private void closeAlertPopup() {
+    	visibleAlertPopup(false);
+    }
+    
+    private void visibleAlertPopup(boolean value) {
+    	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
+    	buttonClickable(!value);
+    	popupAlert.setVisibility(visible);
+    }
+    
+    private void buttonClickable(boolean state) {
     	cherry_back.setEnabled(state);
     	listView.setEnabled(state);
     	btnGetAnimal.setEnabled(state);
-    	popupGetAnimal.setVisibility(visible);
     }
     
     private void removePlants() {
