@@ -225,17 +225,17 @@ public class MainActivity extends AdlibActivity {
 		
 		left1.setDuration(1000);
 		left1.setFillAfter(true);
-		left2.setDuration(1200);
+		left2.setDuration(1400);
 		left2.setFillAfter(true);
 		
 		right1.setDuration(1000);
 		right1.setFillAfter(true);
-		right2.setDuration(1200);
+		right2.setDuration(1400);
 		right2.setFillAfter(true);
 		
-		plant1.startAnimation(left2);
-		plant2.startAnimation(right2);
-		plant3.startAnimation(left1);
-		plant4.startAnimation(right1);
+		plant1.startAnimation(left1);
+		plant2.startAnimation(right1);
+		plant3.startAnimation(left2);
+		plant4.startAnimation(right2);
 	}
 }
