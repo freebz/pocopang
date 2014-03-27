@@ -22,6 +22,7 @@ public class MainActivity extends AdlibActivity {
 	private ImageView cherry_back;
 	private ListView listView;
 	private TextView cherry;
+	private TextView usedCherry;
 	private RelativeLayout cherryStore;
 	private ImageView btnGetAnimal;
 	
@@ -52,6 +53,7 @@ public class MainActivity extends AdlibActivity {
         
         cherry_back = (ImageView) findViewById(R.id.cherry_back);
         cherry = (TextView) findViewById(R.id.cherry);
+        usedCherry = (TextView) findViewById(R.id.used_cherry);
         cherryStore = (RelativeLayout) findViewById(R.id.cherry_store);
         btnGetAnimal = (ImageView) findViewById(R.id.btn_get_animal);
         
@@ -166,6 +168,7 @@ public class MainActivity extends AdlibActivity {
     
     private void refreshCherry() {
     	cherry.setText(Long.toString(databaseHelper.getCherry()));
+    	usedCherry.setText(Long.toString(databaseHelper.getUsedCherry()));
     }
     
     private void openCherryStore() {

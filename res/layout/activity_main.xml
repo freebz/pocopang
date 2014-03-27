@@ -33,23 +33,22 @@
 	          
 	    </RelativeLayout>
 	        
-	    <!-- 
 	    <LinearLayout 
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal">
 	        
-	        
-	    
-	        
-	        <TextView
+	    	<TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textSize="28sp"
-	            android:text="@string/cherry" />
-	             ->
-	        
-	        
+	            android:text="@string/used_cherry" />
+	    	
+	    	<TextView android:id="@+id/used_cherry"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:textSize="28sp" />
 	        
 	        <Button
 		        android:text="@string/clear"
@@ -59,8 +58,6 @@
 		 	    android:onClick="onClickClear" />
 	        
 	    </LinearLayout>
-	     -->
-	    
 	    
 	 	<ListView
 	 	    android:id="@+id/animal_list"

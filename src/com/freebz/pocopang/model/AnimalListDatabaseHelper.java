@@ -28,6 +28,9 @@ public class AnimalListDatabaseHelper {
 	
 	public void clearAnimal() {
 		database.execSQL("delete from " + TABLE_NAME);
+		database.execSQL("update cherry set "
+				+ "cherry = 0"
+				+ " where type = 2");
 	}
 	
 	public void saveAnimal(Animal animal) {
@@ -61,6 +64,10 @@ public class AnimalListDatabaseHelper {
 	
 	public long getCherry() {
 		return getLongValue("select cherry from cherry where type = 1");
+	}
+	
+	public long getUsedCherry() {
+		return getLongValue("select cherry from cherry where type = 2");
 	}
 	
 	public void addCherry(long cherry) {
