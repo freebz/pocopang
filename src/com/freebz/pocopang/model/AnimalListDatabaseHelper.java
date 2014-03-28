@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AnimalListDatabaseHelper {
 
-	private static final int DATABASE_VERSION = 30;
+	private static final int DATABASE_VERSION = 34;
 	private static final String DATABASE_NAME = "pocopang.db";
 	private static final String TABLE_NAME = "animals";
 	
@@ -55,7 +55,10 @@ public class AnimalListDatabaseHelper {
 	}
 	
 	public Cursor getAnimalList() {
-		return database.rawQuery("select * from " + TABLE_NAME + " order by " + ANIMAL_COLUMN_ID, null);
+		return database.rawQuery("select A.* from " + TABLE_NAME
+				+ " A INNER JOIN ANIMAL_LIST B "
+				+ "on A._ID = B._ID "
+				+ "order by B.SEQ", null);
 	}
 	
 	public int getCount() {
@@ -120,6 +123,8 @@ public class AnimalListDatabaseHelper {
 			if (oldVersion < 30) {
 				createTableCherry(database);
 			}
+			
+			createTableAnimalList(database);
 		}
 
 		private void createTableAnimals(SQLiteDatabase database) {
@@ -148,6 +153,28 @@ public class AnimalListDatabaseHelper {
 			values.put("type",  2);
 			values.put("cherry", 0);
 			database.insert("cherry", null, values);
+		}
+		
+		private void createTableAnimalList(SQLiteDatabase database) {
+			database.execSQL("DROP TABLE IF EXISTS ANIMAL_LIST");
+			database.execSQL(
+					"create table ANIMAL_LIST ( "
+					+ ANIMAL_COLUMN_ID + " INTEGER PRIMARY KEY, "
+					+ ANIMAL_COLUMN_NAME + " TEXT, "
+					+ "RATIO INTEGER, "
+					+ "GRADE INTEGER, "
+					+ "SEQ INTEGER)"
+			);
+			
+			ContentValues values = new ContentValues();
+			for (Animal animal : new AnimalList().getAnimalList()) {
+				values.put(ANIMAL_COLUMN_ID, animal.getId());
+				values.put(ANIMAL_COLUMN_NAME, animal.getName());
+				values.put("RATIO", animal.getRatio());
+				values.put("GRADE", animal.getGrade());
+				values.put("SEQ", animal.getSeq());
+				database.insert("ANIMAL_LIST", null, values);
+			}
 		}
 	}
 	

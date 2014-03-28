@@ -7,11 +7,15 @@ public class Animal {
 	private String name;
 	private int ratio;
 	private int count;
+	private int grade;
+	private int seq;
 	
-	public Animal(int id, String name, int ratio) {
+	public Animal(int id, String name, int ratio, int grade, int seq) {
 		this.id = id;
 		this.name = name;
 		this.ratio = ratio;
+		this.grade = grade;
+		this.seq = seq;
 	}
 	
 	public int getId() {
@@ -38,5 +42,16 @@ public class Animal {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 }
