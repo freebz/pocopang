@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AnimalListDatabaseHelper {
 
-	private static final int DATABASE_VERSION = 34;
+	private static final int DATABASE_VERSION = 35;
 	private static final String DATABASE_NAME = "pocopang.db";
 	private static final String TABLE_NAME = "animals";
 	
@@ -111,19 +111,20 @@ public class AnimalListDatabaseHelper {
 		
 		@Override
 		public void onCreate(SQLiteDatabase database) {
-			createTableAnimals(database);
-			createTableCherry(database);
+//			createTableAnimals(database);
+//			createTableCherry(database);
+//			createTableAnimalList(database);
+			onUpgrade(database, -1, -1);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-//			database.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-//			onCreate(database);
-			
+			if (oldVersion < 0) {
+				createTableAnimals(database);
+			}
 			if (oldVersion < 30) {
 				createTableCherry(database);
-			}
-			
+			}			
 			createTableAnimalList(database);
 		}
 
