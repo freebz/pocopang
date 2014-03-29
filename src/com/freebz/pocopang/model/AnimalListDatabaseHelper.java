@@ -111,9 +111,6 @@ public class AnimalListDatabaseHelper {
 		
 		@Override
 		public void onCreate(SQLiteDatabase database) {
-//			createTableAnimals(database);
-//			createTableCherry(database);
-//			createTableAnimalList(database);
 			onUpgrade(database, -1, -1);
 		}
 
