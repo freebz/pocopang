@@ -11,11 +11,17 @@
 	    	android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:background="@android:color/black">
+	        
+	        <ImageView android:id="@+id/diamond_back"
+	            android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/diamond"
+				android:onClick="onClickDiamond" />
 	            
 		    <ImageView android:id="@+id/cherry_back"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_centerInParent="true"
+				android:layout_toRightOf="@id/diamond_back"
 				android:src="@drawable/cherry"
 				android:onClick="onClickCherry" />
 		    
@@ -25,6 +31,17 @@
 	            
 	            
 	            android:layout_alignRight="@id/cherry_back"
+	            android:layout_centerVertical="true"
+	            android:layout_marginRight="30dp"
+	            
+	            android:textColor="@android:color/white"
+	            android:textSize="14sp" />
+		    
+		    <TextView android:id="@+id/diamond"
+		        android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            
+	            android:layout_alignRight="@id/diamond_back"
 	            android:layout_centerVertical="true"
 	            android:layout_marginRight="30dp"
 	            
@@ -50,7 +67,7 @@
 	            android:layout_weight="1"
 	            android:textSize="28sp" />
 	        
-	        <Button
+	        <Button android:id="@+id/btn_clear"
 		        android:text="@string/clear"
 		        android:layout_width="wrap_content"
 		 	    android:layout_height="wrap_content"
@@ -168,6 +185,77 @@
 	    
 	</RelativeLayout>
 	
+	<!--  Diamond Store Popup -->
+	<RelativeLayout android:id="@+id/diamond_store"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+	 	
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/back_diamond_store"
+	        android:layout_alignTop="@id/back_diamond_store"
+	        android:layout_marginTop="18dp"
+	        android:layout_marginRight="12dp"
+	        android:src="@drawable/btn_close"
+	        android:onClick="onClickDiamondStore" />
+	    
+	    <ImageView android:id="@+id/btnDiamond1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@id/back_diamond_store"
+	        android:layout_alignTop="@id/back_diamond_store"
+	        android:layout_marginTop="68dp"
+	        android:layout_marginRight="20dp"
+	        android:src="@drawable/btn_get_diamond"
+	        android:onClick="onClickDiamondStore" />
+	    
+	    <ImageView android:id="@+id/btnDiamond2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnDiamond1"
+	        android:layout_alignLeft="@id/btnDiamond1"
+	        android:layout_marginTop="15dp"
+	        android:src="@drawable/btn_get_diamond"
+	        android:onClick="onClickDiamondStore" />
+	    
+	    <ImageView android:id="@+id/btnDiamond3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnDiamond2"
+	        android:layout_alignLeft="@id/btnDiamond2"
+	        android:layout_marginTop="15dp"
+	        android:src="@drawable/btn_get_diamond"
+	        android:onClick="onClickDiamondStore" />
+	    
+	    <ImageView android:id="@+id/btnDiamond4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnDiamond3"
+	        android:layout_alignLeft="@id/btnDiamond3"
+	        android:layout_marginTop="15dp"
+	        android:src="@drawable/btn_get_diamond"
+	        android:onClick="onClickDiamondStore" />
+	    
+	    <ImageView android:id="@+id/btnDiamond5"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/btnDiamond4"
+	        android:layout_alignLeft="@id/btnDiamond4"
+	        android:layout_marginTop="15dp"
+	        android:src="@drawable/btn_get_diamond"
+	        android:onClick="onClickDiamondStore" />
+	    
+	     <ImageView android:id="@id/back_diamond_store"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/diamond_store" />
+	    
+	</RelativeLayout>
+	
 	<!--  Animal Popup -->
 	<RelativeLayout android:id="@+id/popup_get_animal"
 	    android:layout_width="wrap_content"
@@ -234,7 +322,7 @@
 	
 	
 	<!--  Alert1 Popup -->
-	<RelativeLayout android:id="@+id/popup_alert"
+	<RelativeLayout android:id="@+id/popup_alert_cherry"
 	    android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -248,7 +336,7 @@
 	        android:layout_marginTop="12dp"
 	        android:layout_marginRight="8dp"
 	        android:src="@drawable/btn_close"
-	        android:onClick="onClickAlertPopupClose" />
+	        android:onClick="onClickAlertCherryPopupClose" />
 	    
 	     <ImageView
 	        android:layout_width="wrap_content"
@@ -257,12 +345,45 @@
 	        android:layout_centerHorizontal="true"
 	        android:layout_marginBottom="18dp"
 	        android:src="@drawable/btn_ok"
-	        android:onClick="onClickAlertPopupOk" />
+	        android:onClick="onClickAlertCherryPopupOk" />
 	     
 	     <ImageView android:id="@id/back_popup_alert"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/alert1" />
+	    
+	</RelativeLayout>
+	
+	<!--  Alert2 Popup -->
+	<RelativeLayout android:id="@+id/popup_alert_diamond"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/back_popup_alert"
+	        android:layout_alignTop="@id/back_popup_alert"
+	        android:layout_marginTop="12dp"
+	        android:layout_marginRight="8dp"
+	        android:src="@drawable/btn_close"
+	        android:onClick="onClickAlertDiamondPopupClose" />
+	    
+	     <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@id/back_popup_alert"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="18dp"
+	        android:src="@drawable/btn_ok"
+	        android:onClick="onClickAlertDiamondPopupOk" />
+	     
+	     <ImageView android:id="@id/back_popup_alert"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/alert2" />
 	    
 	</RelativeLayout>
 	

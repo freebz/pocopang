@@ -3,6 +3,7 @@ package com.freebz.pocopang;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -22,8 +23,11 @@ public class MainActivity extends AdlibActivity {
 	private ImageView cherry_back;
 	private ListView listView;
 	private TextView cherry;
+	private TextView diamond;
 	private TextView usedCherry;
+	private Button btnClear;
 	private RelativeLayout cherryStore;
+	private RelativeLayout diamondStore;
 	private ImageView btnGetAnimal;
 	
 	private RelativeLayout popupGetAnimal;
@@ -33,7 +37,8 @@ public class MainActivity extends AdlibActivity {
 	private ImageView plant4;
 	private ImageView imgAnimal;
 	
-	private RelativeLayout popupAlert;
+	private RelativeLayout popupAlertCherry;
+	private RelativeLayout popupAlertDiamond;
 	
 	private AnimalListDatabaseHelper databaseHelper;
 
@@ -53,8 +58,11 @@ public class MainActivity extends AdlibActivity {
         
         cherry_back = (ImageView) findViewById(R.id.cherry_back);
         cherry = (TextView) findViewById(R.id.cherry);
+        diamond = (TextView) findViewById(R.id.diamond);
         usedCherry = (TextView) findViewById(R.id.used_cherry);
+        btnClear = (Button) findViewById(R.id.btn_clear);
         cherryStore = (RelativeLayout) findViewById(R.id.cherry_store);
+        diamondStore = (RelativeLayout) findViewById(R.id.diamond_store);
         btnGetAnimal = (ImageView) findViewById(R.id.btn_get_animal);
         
         popupGetAnimal = (RelativeLayout) findViewById(R.id.popup_get_animal);
@@ -64,8 +72,10 @@ public class MainActivity extends AdlibActivity {
         plant4 = (ImageView) findViewById(R.id.plant4);
         imgAnimal = (ImageView) findViewById(R.id.animal);
         
-        popupAlert = (RelativeLayout) findViewById(R.id.popup_alert);
+        popupAlertCherry = (RelativeLayout) findViewById(R.id.popup_alert_cherry);
+        popupAlertDiamond = (RelativeLayout) findViewById(R.id.popup_alert_diamond);
         
+        refreshDiamond();
         refreshCherry();
     }
 
@@ -99,28 +109,71 @@ public class MainActivity extends AdlibActivity {
     	openCherryStore();
     }
     
+    public void onClickDiamond(View view) {
+    	openDiamondStore();
+    }
+    
     public void onClickCherryStore(View view) {
     	
     	switch(view.getId()) {
     	case R.id.btnCherry1:
-    		databaseHelper.addCherry(6000);
-    		refreshCherry();
+    		addCherry(10, 6000);
     		break;
     	case R.id.btnCherry2:
-    		databaseHelper.addCherry(33000);
-    		refreshCherry();
+    		addCherry(50, 33000);
     		break;
     	case R.id.btnCherry3:
-    		databaseHelper.addCherry(86400);
+    		addCherry(120, 86400);
     		refreshCherry();
     		break;
     	case R.id.btnCherry4:
-    		databaseHelper.addCherry(195000);
-    		refreshCherry();
+    		addCherry(250, 195000);
     		break;
     	}
     	
     	closeCherryStore();
+    }
+    
+    private void addCherry(long diamond, long cherry) {
+    	
+    	if (!databaseHelper.hasDiamond(diamond)) {
+    		closeCherryStore();
+    		openAlertDiamondPopup();
+    		return;
+    	}
+    	
+    	databaseHelper.subDiamond(diamond);
+    	databaseHelper.addCherry(cherry);
+    	refreshDiamond();
+    	refreshCherry();
+    }
+    
+    public void onClickDiamondStore(View view) {
+    
+    	switch(view.getId()) {
+    	case R.id.btnDiamond1:
+    		addDiamond(20);
+    		break;
+    	case R.id.btnDiamond2:
+    		addDiamond(55);
+    		break;
+    	case R.id.btnDiamond3:
+    		addDiamond(120);
+    		break;
+    	case R.id.btnDiamond4:
+    		addDiamond(390);
+    		break;
+    	case R.id.btnDiamond5:
+    		addDiamond(900);
+    		break;
+    	}
+    	
+    	closeDiamondStore();
+    }
+    
+    private void addDiamond(long diamond) {
+    	databaseHelper.addDiamond(diamond);
+    	refreshDiamond();
     }
     
     public void onClickGetAnimalPopupOk(View view) {
@@ -131,19 +184,28 @@ public class MainActivity extends AdlibActivity {
     	pushNewAnimal();
     }
     
-    public void onClickAlertPopupClose(View view) {
-    	closeAlertPopup();
+    public void onClickAlertCherryPopupClose(View view) {
+    	closeAlertCherryPopup();
     }
     
-    public void onClickAlertPopupOk(View view) {
-    	closeAlertPopup();
+    public void onClickAlertCherryPopupOk(View view) {
+    	closeAlertCherryPopup();
     	openCherryStore();
+    }
+    
+    public void onClickAlertDiamondPopupClose(View view) {
+    	closeAlertDiamondPopup();
+    }
+    
+    public void onClickAlertDiamondPopupOk(View view) {
+    	closeAlertDiamondPopup();
+    	openDiamondStore();
     }
     
     private void pushNewAnimal() {
     	if (!databaseHelper.hasCherry(6000)) {
     		closeGatAnimalPopup();
-    		openAlertPopup();
+    		openAlertCherryPopup();
     		return;
     	}
     	
@@ -158,6 +220,7 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void refresh() {
+    	refreshDiamond();
     	refreshCherry();
     	refreshList();
     }
@@ -171,52 +234,61 @@ public class MainActivity extends AdlibActivity {
     	usedCherry.setText(Long.toString(databaseHelper.getUsedCherry()));
     }
     
+    private void refreshDiamond() {
+    	diamond.setText(Long.toString(databaseHelper.getDiamond()));
+    }
+    
+    private void openDiamondStore() {
+    	setVisibleView(diamondStore, true);
+    }
+    
+    private void closeDiamondStore() {
+    	setVisibleView(diamondStore, false);
+    }
+    
     private void openCherryStore() {
-    	visibleCherryStore(true);
+    	setVisibleView(cherryStore, true);
     }
     
     private void closeCherryStore() {
-    	visibleCherryStore(false);
-    }
-    
-    private void visibleCherryStore(boolean value) {
-    	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
-    	buttonClickable(!value);
-    	cherryStore.setVisibility(visible);
+    	setVisibleView(cherryStore, false);
     }
     
     private void openGatAnimalPopup() {
-    	visibleGatAnimalPopup(true);
+    	setVisibleView(popupGetAnimal, true);
     }
     
     private void closeGatAnimalPopup() {
-    	visibleGatAnimalPopup(false);
+    	setVisibleView(popupGetAnimal, false);
     }
     
-    private void visibleGatAnimalPopup(boolean value) {
+    private void openAlertCherryPopup() {
+    	setVisibleView(popupAlertCherry, true);
+    }
+    
+    private void closeAlertCherryPopup() {
+    	setVisibleView(popupAlertCherry, false);
+    }
+    
+    private void openAlertDiamondPopup() {
+    	setVisibleView(popupAlertDiamond, true);
+    }
+    
+    private void closeAlertDiamondPopup() {
+    	setVisibleView(popupAlertDiamond, false);
+    }
+    
+    private void setVisibleView(View target, boolean value) {
     	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
     	buttonClickable(!value);
-    	popupGetAnimal.setVisibility(visible);
-    }
-    
-    private void openAlertPopup() {
-    	visibleAlertPopup(true);
-    }
-    
-    private void closeAlertPopup() {
-    	visibleAlertPopup(false);
-    }
-    
-    private void visibleAlertPopup(boolean value) {
-    	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
-    	buttonClickable(!value);
-    	popupAlert.setVisibility(visible);
+    	target.setVisibility(visible);
     }
     
     private void buttonClickable(boolean state) {
     	cherry_back.setEnabled(state);
     	listView.setEnabled(state);
     	btnGetAnimal.setEnabled(state);
+    	btnClear.setEnabled(state);
     }
     
     private void removePlants() {

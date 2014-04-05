@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AnimalListDatabaseHelper {
 
-	private static final int DATABASE_VERSION = 36;
+	private static final int DATABASE_VERSION = 37;
 	private static final String DATABASE_NAME = "pocopang.db";
 	private static final String TABLE_NAME = "animals";
 	
@@ -73,10 +73,24 @@ public class AnimalListDatabaseHelper {
 		return getLongValue("select cherry from cherry where type = 2");
 	}
 	
+	public long getDiamond() {
+		return getLongValue("select cherry from cherry where type = 3");
+	}
+	
+	public long getUsedDiamond() {
+		return getLongValue("select cherry from cherry where type = 4");
+	}
+	
 	public void addCherry(long cherry) {
 		database.execSQL("update cherry set "
 				+ "cherry = cherry + " + Long.toString(cherry)
 				+ " where type = 1");
+	}
+	
+	public void addDiamond(long diamond) {
+		database.execSQL("update cherry set "
+				+ "cherry = cherry + " + Long.toString(diamond)
+				+ " where type = 3");
 	}
 	
 	public void subCherry(long cherry) {
@@ -91,8 +105,24 @@ public class AnimalListDatabaseHelper {
 		}
 	}
 	
+	public void subDiamond(long diamond) {
+		if (hasDiamond(diamond)) {
+			database.execSQL("update cherry set "
+					+ "cherry = cherry - " + Long.toString(diamond)
+					+ " where type = 3");
+			
+			database.execSQL("update cherry set "
+					+ "cherry = cherry + " + Long.toString(diamond)
+					+ " where type = 4");
+		}
+	}
+	
 	public boolean hasCherry(long cherry) {
 		return getCherry() >= cherry;
+	}
+	
+	public boolean hasDiamond(long diamond) {
+		return getDiamond() >= diamond;
 	}
 	
 	private long getLongValue(String sql) {
@@ -121,7 +151,10 @@ public class AnimalListDatabaseHelper {
 			}
 			if (oldVersion < 30) {
 				createTableCherry(database);
-			}			
+			}
+			if (oldVersion < 37) {
+				addDiamondToCherryTable(database);
+			}
 			createTableAnimalList(database);
 		}
 
@@ -149,6 +182,17 @@ public class AnimalListDatabaseHelper {
 			database.insert("cherry", null, values);
 			
 			values.put("type",  2);
+			values.put("cherry", 0);
+			database.insert("cherry", null, values);
+		}
+		
+		private void addDiamondToCherryTable(SQLiteDatabase database) {
+			ContentValues values = new ContentValues();
+			values.put("type", 3);
+			values.put("cherry", 900);
+			database.insert("cherry", null, values);
+			
+			values.put("type",  4);
 			values.put("cherry", 0);
 			database.insert("cherry", null, values);
 		}
