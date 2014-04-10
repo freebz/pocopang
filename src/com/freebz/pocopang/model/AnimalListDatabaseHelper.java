@@ -125,6 +125,33 @@ public class AnimalListDatabaseHelper {
 		return getDiamond() >= diamond;
 	}
 	
+	public boolean hasAnimals(int grade, long count) {
+		return getAnimalCountByGrade(grade) >= count;
+	}
+	
+	public void subAnimal(int grade, long count) {
+		Cursor cursor = database.rawQuery("select _id, count from ANIMALS A INNER JOIN ANIMAL_LIST B "
+				+ "ON A._ID = B._ID "
+				+ "WHERE B.GRADE = " + grade, null);
+		
+		cursor.moveToFirst();
+		
+		while(!cursor.isAfterLast()) {
+			
+		}
+	}
+	
+	private long getAnimalCountByGrade(int grade) {
+		return getLongValue("select sum(count) from ANIMALS A inner join ANIMAL_LIST B "
+				+ "ON A._ID = B._ID "
+				+ "WHERE B.GRADE = " + grade);
+	}
+	
+	private long getAnimalCountById(int id) {
+		return getLongValue("select count from ANIMALS "
+				+ "WHERE _ID = " + id);
+	}
+	
 	private long getLongValue(String sql) {
 		Cursor cursor = database.rawQuery(sql, null);
 		cursor.moveToFirst();

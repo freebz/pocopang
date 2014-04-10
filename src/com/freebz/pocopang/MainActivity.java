@@ -20,6 +20,7 @@ public class MainActivity extends AdlibActivity {
 	
 	private AnimalList animals = new AnimalList();
 	private AnimalAdapter animalAdapter;
+	private ImageView diamond_back;
 	private ImageView cherry_back;
 	private ListView listView;
 	private TextView cherry;
@@ -29,6 +30,7 @@ public class MainActivity extends AdlibActivity {
 	private RelativeLayout cherryStore;
 	private RelativeLayout diamondStore;
 	private ImageView btnGetAnimal;
+	private ImageView btnComposite;
 	
 	private RelativeLayout popupGetAnimal;
 	private ImageView plant1;
@@ -36,6 +38,8 @@ public class MainActivity extends AdlibActivity {
 	private ImageView plant3;
 	private ImageView plant4;
 	private ImageView imgAnimal;
+	
+	private RelativeLayout popupComposite;
 	
 	private RelativeLayout popupAlertCherry;
 	private RelativeLayout popupAlertDiamond;
@@ -56,6 +60,7 @@ public class MainActivity extends AdlibActivity {
         animalAdapter = new AnimalAdapter(this, databaseHelper.getAnimalList());
         listView.setAdapter(animalAdapter);
         
+        diamond_back = (ImageView) findViewById(R.id.diamond_back);
         cherry_back = (ImageView) findViewById(R.id.cherry_back);
         cherry = (TextView) findViewById(R.id.cherry);
         diamond = (TextView) findViewById(R.id.diamond);
@@ -64,6 +69,7 @@ public class MainActivity extends AdlibActivity {
         cherryStore = (RelativeLayout) findViewById(R.id.cherry_store);
         diamondStore = (RelativeLayout) findViewById(R.id.diamond_store);
         btnGetAnimal = (ImageView) findViewById(R.id.btn_get_animal);
+        btnComposite = (ImageView) findViewById(R.id.btn_composite);
         
         popupGetAnimal = (RelativeLayout) findViewById(R.id.popup_get_animal);
         plant1 = (ImageView) findViewById(R.id.plant1);
@@ -71,6 +77,8 @@ public class MainActivity extends AdlibActivity {
         plant3 = (ImageView) findViewById(R.id.plant3);
         plant4 = (ImageView) findViewById(R.id.plant4);
         imgAnimal = (ImageView) findViewById(R.id.animal);
+        
+        popupComposite = (RelativeLayout) findViewById(R.id.popup_composite);
         
         popupAlertCherry = (RelativeLayout) findViewById(R.id.popup_alert_cherry);
         popupAlertDiamond = (RelativeLayout) findViewById(R.id.popup_alert_diamond);
@@ -103,6 +111,10 @@ public class MainActivity extends AdlibActivity {
     public void onClickGetAnimal(View view) {
     	openGatAnimalPopup();
     	pushNewAnimal();
+    }
+    
+    public void onClickComposite(View view) {
+    	openAnimalComposite();
     }
     
     public void onClickCherry(View view) {
@@ -169,6 +181,10 @@ public class MainActivity extends AdlibActivity {
     	}
     	
     	closeDiamondStore();
+    }
+    
+    public void onClickCloseComposite(View view) {
+    	closeAnimalComposite();
     }
     
     private void addDiamond(long diamond) {
@@ -278,6 +294,14 @@ public class MainActivity extends AdlibActivity {
     	setVisibleView(popupAlertDiamond, false);
     }
     
+    private void openAnimalComposite() {
+    	setVisibleView(popupComposite, true);
+    }
+    
+    private void closeAnimalComposite() {
+    	setVisibleView(popupComposite, false);
+    }
+    
     private void setVisibleView(View target, boolean value) {
     	int visible = (value) ? View.VISIBLE : View.INVISIBLE;
     	buttonClickable(!value);
@@ -285,9 +309,11 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void buttonClickable(boolean state) {
+    	diamond_back.setEnabled(state);
     	cherry_back.setEnabled(state);
     	listView.setEnabled(state);
     	btnGetAnimal.setEnabled(state);
+    	btnComposite.setEnabled(state);
     	btnClear.setEnabled(state);
     }
     

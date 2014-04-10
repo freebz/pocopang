@@ -1,5 +1,6 @@
 package com.freebz.pocopang.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,5 +68,19 @@ public class AnimalList {
 	
 	public List<Animal> getAnimalList() {
 		return animals;
+	}
+	
+	public Animal getRandom(int grade) {
+		List<Animal> list = new ArrayList<Animal>();
+		for (Animal animal : animals) {
+			if (animal.getGrade() == grade) {
+				list.add(animal);
+			}
+		}
+		
+		if (list.size() == 0) return null;
+		
+		int index = (int) (Math.random() * list.size());
+		return list.get(index);
 	}
 }

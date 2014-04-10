@@ -12,39 +12,35 @@
 	        android:layout_height="wrap_content"
 	        android:background="@android:color/black">
 	        
+	        <ImageView android:id="@+id/cherry_back"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:src="@drawable/cherry"
+				android:onClick="onClickCherry" />
+	        
 	        <ImageView android:id="@+id/diamond_back"
 	            android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_toLeftOf="@id/cherry_back"
 				android:src="@drawable/diamond"
 				android:onClick="onClickDiamond" />
-	            
-		    <ImageView android:id="@+id/cherry_back"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_toRightOf="@id/diamond_back"
-				android:src="@drawable/cherry"
-				android:onClick="onClickCherry" />
 		    
 		    <TextView android:id="@+id/cherry"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            
-	            
 	            android:layout_alignRight="@id/cherry_back"
 	            android:layout_centerVertical="true"
 	            android:layout_marginRight="30dp"
-	            
 	            android:textColor="@android:color/white"
 	            android:textSize="14sp" />
 		    
 		    <TextView android:id="@+id/diamond"
 		        android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            
 	            android:layout_alignRight="@id/diamond_back"
 	            android:layout_centerVertical="true"
 	            android:layout_marginRight="30dp"
-	            
 	            android:textColor="@android:color/white"
 	            android:textSize="14sp" />
 	          
@@ -96,13 +92,26 @@
 	        android:layout_height="wrap_content"
 	        android:background="#de9a31">
 	        
-	 	    <ImageView android:id="@+id/btn_get_animal"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_centerInParent="true"
-		        android:src="@drawable/btn_get_animal"
-		        android:onClick="onClickGetAnimal" />
+	 	    <LinearLayout
+	 	        android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	 	        android:layout_centerInParent="true">
+	 	        
+	 	        <ImageView android:id="@+id/btn_get_animal"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:src="@drawable/btn_get_animal"
+			        android:onClick="onClickGetAnimal" />
 	 	    
+		 	    <ImageView android:id="@+id/btn_composite"
+		 	        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="10dp"
+			        android:src="@drawable/btn_composite"
+			        android:onClick="onClickComposite" />
+		 	    
+	 	    </LinearLayout>
+	        
 	 	</RelativeLayout>
 	 	
 	 	<!--
@@ -320,6 +329,51 @@
     
 	</RelativeLayout>
 	
+	<!--  Animal Composite Popup -->
+	<RelativeLayout android:id="@+id/popup_composite"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignRight="@+id/back_composite"
+	        android:layout_alignTop="@id/back_composite"
+	        android:layout_marginTop="18dp"
+	        android:layout_marginRight="12dp"
+	        android:src="@drawable/btn_close"
+	        android:onClick="onClickCloseComposite" />
+	    
+	    <ImageView android:id="@id/back_composite"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/composite_shot" />
+	    
+	    <ImageView android:id="@+id/btn_grade_platinum"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginTop="55dp"
+	        android:src="@drawable/btn_grade_silver" />
+	    
+	    <ImageView android:id="@+id/btn_grade_gold"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/btn_grade_platinum"
+	        android:layout_marginLeft="10dp"
+	        android:src="@drawable/btn_grade_silver" />
+	    
+	    <ImageView android:id="@+id/btn_grade_silver"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_toRightOf="@id/btn_grade_gold"
+	        android:layout_marginLeft="10dp"
+	        android:src="@drawable/btn_grade_silver" />
+	    
+	</RelativeLayout>
 	
 	<!--  Alert1 Popup -->
 	<RelativeLayout android:id="@+id/popup_alert_cherry"
