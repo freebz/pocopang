@@ -346,33 +346,114 @@
 	        android:src="@drawable/btn_close"
 	        android:onClick="onClickCloseComposite" />
 	    
-	    <ImageView android:id="@id/back_composite"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_centerInParent="true"
-	        android:src="@drawable/composite_shot" />
-	    
 	    <ImageView android:id="@+id/btn_grade_platinum"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="30dp"
 	        android:layout_marginTop="55dp"
-	        android:src="@drawable/btn_grade_silver" />
+	        android:src="@drawable/btn_grade_silver"
+	        android:onClick="onClickCompositeGradePlatinum" />
 	    
 	    <ImageView android:id="@+id/btn_grade_gold"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_toRightOf="@id/btn_grade_platinum"
 	        android:layout_marginLeft="10dp"
-	        android:src="@drawable/btn_grade_silver" />
+	        android:layout_marginTop="55dp"
+	        android:src="@drawable/btn_grade_silver"
+	        android:onClick="onClickCompositeGradeGold" />
 	    
 	    <ImageView android:id="@+id/btn_grade_silver"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_toRightOf="@id/btn_grade_gold"
 	        android:layout_marginLeft="10dp"
-	        android:src="@drawable/btn_grade_silver" />
+	        android:layout_marginTop="55dp"
+	        android:src="@drawable/btn_grade_silver"
+	        android:onClick="onClickCompositeGradeSilver" />
 	    
+	    <ImageView android:id="@id/back_composite"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:src="@drawable/composite_shot" />
+	    
+	    <ImageView android:id="@+id/back_composite_platinum"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="50dp"
+	        android:visibility="invisible"
+	        android:src="@drawable/composite_select_platinum" />
+	    
+	    <ImageView android:id="@+id/back_composite_gold"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="50dp"
+	        android:visibility="invisible"
+	        android:src="@drawable/composite_select_gold" />
+	    
+	    <ImageView android:id="@+id/back_composite_silver"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="50dp"
+	        android:visibility="invisible"
+	        android:src="@drawable/composite_select_silver" />
+	    
+	    <ImageView android:id="@+id/btn_composite_action"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@id/back_composite"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="15dp"
+	        android:visibility="invisible"
+	        android:src="@drawable/btn_composite_action"
+	        android:onClick="onClickCompositeAction" />
+	    
+	    <!--
+	    <RelativeLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true">
+	        
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/alert_composite_silver" />
+	        
+	    </RelativeLayout>
+	    -->
+	    
+	</RelativeLayout>
+	
+	<!--  Composite Animal Popup -->
+	<RelativeLayout android:id="@+id/popup_composite_animal"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+	    
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/popup_composite_animal" />
+	    
+	    <ImageView android:id="@+id/compositeAnimal"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="94dp"
+	        android:layout_marginTop="60dp" />
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="75dp"
+	        android:layout_marginTop="262dp"
+	        android:src="@drawable/btn_ok"
+	        android:onClick="onClickCompositeAnimalPopupOk" />
+
 	</RelativeLayout>
 	
 	<!--  Alert1 Popup -->

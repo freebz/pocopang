@@ -40,11 +40,22 @@ public class MainActivity extends AdlibActivity {
 	private ImageView imgAnimal;
 	
 	private RelativeLayout popupComposite;
+	private ImageView compositePlatinum;
+	private ImageView compositeGold;
+	private ImageView compositeSilver;
+	private ImageView btnCompositeAction;
+	private RelativeLayout popupCompositeAnimal;
+	private ImageView compositeAnimal;
 	
 	private RelativeLayout popupAlertCherry;
 	private RelativeLayout popupAlertDiamond;
 	
 	private AnimalListDatabaseHelper databaseHelper;
+	
+	private int compositeGrade = 0;
+	private int compositeCount = 0;
+	private long compositeCherry = 0;
+	private long compositeDiamond = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +90,12 @@ public class MainActivity extends AdlibActivity {
         imgAnimal = (ImageView) findViewById(R.id.animal);
         
         popupComposite = (RelativeLayout) findViewById(R.id.popup_composite);
+        compositePlatinum = (ImageView) findViewById(R.id.back_composite_platinum);
+        compositeGold = (ImageView) findViewById(R.id.back_composite_gold);
+        compositeSilver = (ImageView) findViewById(R.id.back_composite_silver);
+        btnCompositeAction = (ImageView) findViewById(R.id.btn_composite_action);
+        popupCompositeAnimal = (RelativeLayout) findViewById(R.id.popup_composite_animal);
+        compositeAnimal = (ImageView) findViewById(R.id.compositeAnimal);
         
         popupAlertCherry = (RelativeLayout) findViewById(R.id.popup_alert_cherry);
         popupAlertDiamond = (RelativeLayout) findViewById(R.id.popup_alert_diamond);
@@ -187,6 +204,55 @@ public class MainActivity extends AdlibActivity {
     	closeAnimalComposite();
     }
     
+    public void onClickCompositeGradePlatinum(View view) {
+    	compositeGrade = 2;
+		compositeCount = 7;
+		compositeCherry = 0;
+		compositeDiamond = 20;
+		selectCompositePlatinum();
+		if (databaseHelper.hasAnimals(compositeGrade, compositeCount)
+    			&& databaseHelper.hasDiamond(compositeDiamond)) {
+    		btnCompositeAction.setVisibility(View.VISIBLE);
+    	}
+    	else {
+    		btnCompositeAction.setVisibility(View.INVISIBLE);
+    	}
+    }
+    
+    public void onClickCompositeGradeGold(View view) {
+    	compositeGrade = 3;
+		compositeCount = 5;
+		compositeCherry = 10000;
+		compositeDiamond = 0;
+		selectCompositeGold();
+    	if (databaseHelper.hasAnimals(compositeGrade, compositeCount)
+    			&& databaseHelper.hasCherry(compositeCherry)) {
+    		btnCompositeAction.setVisibility(View.VISIBLE);
+    	}
+    	else {
+    		btnCompositeAction.setVisibility(View.INVISIBLE);
+    	}
+    }
+    
+    public void onClickCompositeGradeSilver(View view) {
+    	compositeGrade = 4;
+		compositeCount = 5;
+		compositeCherry = 3000;
+		compositeDiamond = 0;
+		selectCompositeSilver();
+		if (databaseHelper.hasAnimals(compositeGrade, compositeCount)
+    			&& databaseHelper.hasCherry(compositeCherry)) {
+    		btnCompositeAction.setVisibility(View.VISIBLE);
+    	}
+    	else {
+    		btnCompositeAction.setVisibility(View.INVISIBLE);
+    	}
+    }
+    
+    public void onClickCompositeAction(View view) {
+    	compositeAnimal(compositeGrade, compositeCount, compositeCherry, compositeDiamond);
+    }
+    
     private void addDiamond(long diamond) {
     	databaseHelper.addDiamond(diamond);
     	refreshDiamond();
@@ -216,6 +282,10 @@ public class MainActivity extends AdlibActivity {
     public void onClickAlertDiamondPopupOk(View view) {
     	closeAlertDiamondPopup();
     	openDiamondStore();
+    }
+    
+    public void onClickCompositeAnimalPopupOk(View view) {
+    	closeCompositeAnimalPopup();
     }
     
     private void pushNewAnimal() {
@@ -300,6 +370,37 @@ public class MainActivity extends AdlibActivity {
     
     private void closeAnimalComposite() {
     	setVisibleView(popupComposite, false);
+    	deselectComposite();
+    	btnCompositeAction.setVisibility(View.INVISIBLE);
+    }
+    
+    private void openCompositeAnimalPopup() {
+    	setVisibleView(popupCompositeAnimal, true);
+    }
+    
+    private void closeCompositeAnimalPopup() {
+    	setVisibleView(popupCompositeAnimal, false);
+    }
+    
+    private void deselectComposite() {
+    	compositePlatinum.setVisibility(View.INVISIBLE);
+    	compositeGold.setVisibility(View.INVISIBLE);
+    	compositeSilver.setVisibility(View.INVISIBLE);
+    }
+    
+    private void selectCompositePlatinum() {
+    	deselectComposite();
+    	compositePlatinum.setVisibility(View.VISIBLE);
+    }
+    
+    private void selectCompositeGold() {
+    	deselectComposite();
+    	compositeGold.setVisibility(View.VISIBLE);
+    }
+    
+    private void selectCompositeSilver() {
+    	deselectComposite();
+    	compositeSilver.setVisibility(View.VISIBLE);
     }
     
     private void setVisibleView(View target, boolean value) {
@@ -339,4 +440,21 @@ public class MainActivity extends AdlibActivity {
 		plant3.startAnimation(left2);
 		plant4.startAnimation(right2);
 	}
+    
+    private void compositeAnimal(int grade, int count, long cherry, long diamond) {
+    	
+    	databaseHelper.subCherry(cherry);
+    	databaseHelper.subDiamond(diamond);
+    	
+    	databaseHelper.subAnimal(grade, count);
+    	Animal animal = animals.getRandom(grade - 1);
+    	databaseHelper.saveAnimal(animal);
+    	
+    	closeAnimalComposite();
+    	openCompositeAnimalPopup();
+    	
+    	int resId = this.getResources().getIdentifier("_" + animal.getId(), "drawable", "com.freebz.pocopang");
+    	compositeAnimal.setImageResource(resId);
+    	refresh();
+    }
 }

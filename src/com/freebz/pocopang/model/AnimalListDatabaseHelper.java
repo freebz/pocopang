@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AnimalListDatabaseHelper {
 
-	private static final int DATABASE_VERSION = 37;
+	private static final int DATABASE_VERSION = 39;
 	private static final String DATABASE_NAME = "pocopang.db";
 	private static final String TABLE_NAME = "animals";
 	
@@ -130,15 +130,40 @@ public class AnimalListDatabaseHelper {
 	}
 	
 	public void subAnimal(int grade, long count) {
-		Cursor cursor = database.rawQuery("select _id, count from ANIMALS A INNER JOIN ANIMAL_LIST B "
+		Cursor cursor = database.rawQuery("select A._id, A.count from ANIMALS A INNER JOIN ANIMAL_LIST B "
 				+ "ON A._ID = B._ID "
-				+ "WHERE B.GRADE = " + grade, null);
+				+ "WHERE B.GRADE = " + grade
+				+ " ORDER BY A.COUNT DESC, B.SEQ, A._ID", null);
 		
 		cursor.moveToFirst();
 		
 		while(!cursor.isAfterLast()) {
+			int id = cursor.getInt(0);
+			long cnt = cursor.getLong(1);
 			
+			if (cnt >= count) {
+				cnt -= count;
+				count = 0;
+			}
+			else {
+				count -= cnt;
+				cnt = 0;
+			}
+			updateAnimalCount(id, cnt);
+			
+			if (count == 0) {
+				break;
+			}
+			cursor.moveToNext();
 		}
+		
+		cursor.close();
+	}
+	
+	private void updateAnimalCount(int id, long count) {
+		database.execSQL("update animals set "
+				+ "count = " + count
+				+ " where _id = " + id);
 	}
 	
 	private long getAnimalCountByGrade(int grade) {
@@ -147,10 +172,10 @@ public class AnimalListDatabaseHelper {
 				+ "WHERE B.GRADE = " + grade);
 	}
 	
-	private long getAnimalCountById(int id) {
-		return getLongValue("select count from ANIMALS "
-				+ "WHERE _ID = " + id);
-	}
+//	private long getAnimalCountById(int id) {
+//		return getLongValue("select count from ANIMALS "
+//				+ "WHERE _ID = " + id);
+//	}
 	
 	private long getLongValue(String sql) {
 		Cursor cursor = database.rawQuery(sql, null);
