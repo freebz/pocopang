@@ -58,6 +58,7 @@ public class AnimalListDatabaseHelper {
 		return database.rawQuery("select A.* from " + TABLE_NAME
 				+ " A INNER JOIN ANIMAL_LIST B "
 				+ "on A._ID = B._ID "
+				+ "where A.COUNT > 0 "
 				+ "order by B.SEQ", null);
 	}
 	

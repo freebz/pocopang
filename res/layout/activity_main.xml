@@ -381,26 +381,28 @@
 	    <ImageView android:id="@+id/back_composite_platinum"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="50dp"
 	        android:visibility="invisible"
 	        android:src="@drawable/composite_select_platinum" />
 	    
 	    <ImageView android:id="@+id/back_composite_gold"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="50dp"
 	        android:visibility="invisible"
 	        android:src="@drawable/composite_select_gold" />
 	    
 	    <ImageView android:id="@+id/back_composite_silver"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="50dp"
 	        android:visibility="invisible"
 	        android:src="@drawable/composite_select_silver" />
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@id/back_composite"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="15dp"
+	        android:src="@drawable/btn_composite_action_disable" />
 	    
 	    <ImageView android:id="@+id/btn_composite_action"
 	        android:layout_width="wrap_content"
