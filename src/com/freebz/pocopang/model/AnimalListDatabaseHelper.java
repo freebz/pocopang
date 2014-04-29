@@ -30,14 +30,10 @@ public class AnimalListDatabaseHelper {
 		database.execSQL("delete from " + TABLE_NAME);
 		database.execSQL("update cherry set "
 				+ "cherry = 0"
-				+ " where type = 2");
+				+ " where type in (2, 4)");
 	}
 	
-	public void saveAnimal(Animal animal) {
-		if (!hasCherry(6000)) {
-    		return;
-    	}
-		
+	public void saveAnimal(Animal animal) {		
 		ContentValues values = new ContentValues();
 		values.put(ANIMAL_COLUMN_ID, animal.getId());
 		values.put(ANIMAL_COLUMN_NAME, animal.getName());
@@ -50,8 +46,6 @@ public class AnimalListDatabaseHelper {
 					+ ANIMAL_COLUMN_COUNT + " = " + ANIMAL_COLUMN_COUNT + " + 1 where "
 					+ ANIMAL_COLUMN_ID + " = " +  animal.getId());
 		}
-		
-		subCherry(6000);
 	}
 	
 	public Cursor getAnimalList() {

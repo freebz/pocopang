@@ -49,15 +49,28 @@ public class AnimalList {
 	});
 	
 	private int totalRaito;
+	private int advancedRaito;
 	
 	public AnimalList() {
 		for (Animal animal : animals) {
 			totalRaito += animal.getRatio();
+			if (animal.getGrade() < 3) {
+				advancedRaito += animal.getRatio();
+			}
 		}
 	}
 	
 	public Animal getRandom() {
 		int value = (int) (Math.random() * totalRaito);
+		return getRandomWithRaito(value);
+	}
+	
+	public Animal getRandomAdvance() {
+		int value = (int) (Math.random() * advancedRaito);
+		return getRandomWithRaito(value);
+	}
+	
+	private Animal getRandomWithRaito(int value) {
 		for (Animal animal : animals) {
 			value -= animal.getRatio();
 			if (value <= 0) {

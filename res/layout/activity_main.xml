@@ -100,8 +100,15 @@
 	 	        <ImageView android:id="@+id/btn_get_animal"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			        android:src="@drawable/btn_get_animal"
+			        android:src="@drawable/btn_get_animal_normal"
 			        android:onClick="onClickGetAnimal" />
+	 	        
+	 	        <ImageView android:id="@+id/btn_get_animal_advance"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="10dp"
+			        android:src="@drawable/btn_get_animal_advance"
+			        android:onClick="onClickGetAnimalAdvance" />
 	 	    
 		 	    <ImageView android:id="@+id/btn_composite"
 		 	        android:layout_width="wrap_content"

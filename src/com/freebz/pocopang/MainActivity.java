@@ -30,6 +30,7 @@ public class MainActivity extends AdlibActivity {
 	private RelativeLayout cherryStore;
 	private RelativeLayout diamondStore;
 	private ImageView btnGetAnimal;
+	private ImageView btnGetAnimalAdvance;
 	private ImageView btnComposite;
 	
 	private RelativeLayout popupGetAnimal;
@@ -56,6 +57,8 @@ public class MainActivity extends AdlibActivity {
 	private int compositeCount = 0;
 	private long compositeCherry = 0;
 	private long compositeDiamond = 0;
+	
+	private boolean advancedMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,7 @@ public class MainActivity extends AdlibActivity {
         cherryStore = (RelativeLayout) findViewById(R.id.cherry_store);
         diamondStore = (RelativeLayout) findViewById(R.id.diamond_store);
         btnGetAnimal = (ImageView) findViewById(R.id.btn_get_animal);
+        btnGetAnimalAdvance = (ImageView) findViewById(R.id.btn_get_animal_advance);
         btnComposite = (ImageView) findViewById(R.id.btn_composite);
         
         popupGetAnimal = (RelativeLayout) findViewById(R.id.popup_get_animal);
@@ -126,7 +130,14 @@ public class MainActivity extends AdlibActivity {
     }
     
     public void onClickGetAnimal(View view) {
-    	openGatAnimalPopup();
+    	advancedMode = false;
+    	openGetAnimalPopup();
+    	pushNewAnimal();
+    }
+    
+    public void onClickGetAnimalAdvance(View view) {
+    	advancedMode = true;
+    	openGetAnimalPopup();
     	pushNewAnimal();
     }
     
@@ -289,13 +300,24 @@ public class MainActivity extends AdlibActivity {
     }
     
     private void pushNewAnimal() {
-    	if (!databaseHelper.hasCherry(6000)) {
-    		closeGatAnimalPopup();
-    		openAlertCherryPopup();
-    		return;
+    	if (advancedMode) {
+    		if (!databaseHelper.hasDiamond(20)) {
+        		closeGatAnimalPopup();
+        		openAlertDiamondPopup();
+        		return;
+        	}
+    		databaseHelper.subDiamond(20);
+    	}
+    	else {
+    		if (!databaseHelper.hasCherry(6000)) {
+        		closeGatAnimalPopup();
+        		openAlertCherryPopup();
+        		return;
+        	}
+    		databaseHelper.subCherry(6000);
     	}
     	
-    	Animal animal = animals.getRandom();
+    	Animal animal = (advancedMode) ? animals.getRandomAdvance() : animals.getRandom();
     	
     	int resId = this.getResources().getIdentifier("_" + animal.getId(), "drawable", "com.freebz.pocopang");
     	imgAnimal.setImageResource(resId);
@@ -340,7 +362,7 @@ public class MainActivity extends AdlibActivity {
     	setVisibleView(cherryStore, false);
     }
     
-    private void openGatAnimalPopup() {
+    private void openGetAnimalPopup() {
     	setVisibleView(popupGetAnimal, true);
     }
     
@@ -414,6 +436,7 @@ public class MainActivity extends AdlibActivity {
     	cherry_back.setEnabled(state);
     	listView.setEnabled(state);
     	btnGetAnimal.setEnabled(state);
+    	btnGetAnimalAdvance.setEnabled(state);
     	btnComposite.setEnabled(state);
     	btnClear.setEnabled(state);
     }
