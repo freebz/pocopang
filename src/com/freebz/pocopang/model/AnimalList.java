@@ -6,9 +6,10 @@ import java.util.List;
 
 public class AnimalList {
 	
-	// Max Id 38
+	// Max Id 40
 	private List<Animal> animals = Arrays.asList(new Animal[]{
-		  new Animal(35, "태극", 225, 1, 50)
+		  new Animal(39, "유니보니", 225, 1, 40)
+		, new Animal(35, "태극", 225, 1, 50)
 		, new Animal(1, "고백해보니", 0, 1, 100)
 		, new Animal(2, "라즈밤", 225, 1, 200)
 		, new Animal(3, "로빈루키", 225, 1, 300)
@@ -17,6 +18,7 @@ public class AnimalList {
 		, new Animal(38, "천만애보니", 0, 2, 450)
 		, new Animal(5, "타고보니", 0, 2, 500)
 		, new Animal(6, "블루밤", 838, 2, 600)
+		, new Animal(40, "메리보니코코", 0, 2, 650)
 		, new Animal(7, "바이포", 838, 2, 700)
 		, new Animal(8, "로즈혼", 838, 2, 800)
 		, new Animal(9, "라이노", 838, 2, 900)

@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AnimalListDatabaseHelper {
 
-	private static final int DATABASE_VERSION = 39;
+	private static final int DATABASE_VERSION = 40;
 	private static final String DATABASE_NAME = "pocopang.db";
 	private static final String TABLE_NAME = "animals";
 	
